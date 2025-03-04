@@ -17,16 +17,13 @@
         padding: 0;
       }
 
-      .container {
+      #container {
         display: grid;
-        grid-template-columns: repeat(
-          auto-fit,
-          minmax(250px, 1fr)
-        ); /* Adjusted minmax for responsiveness */
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 20px;
         padding: 20px;
-        width: 90%; /* Use percentage width to allow responsiveness */
-        max-width: 1200px; /* Optional: Set a max-width to prevent excessive stretching on large screens */
+        width: 90%;
+        max-width: 1200px;
       }
 
       .card {
@@ -34,18 +31,21 @@
         border-radius: 12px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         overflow: hidden;
-        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
       }
 
       .card img {
         width: 100%;
         height: 200px;
         object-fit: cover;
-        border-radius: 8px;
+        border-radius: 8px 8px 0 0;
       }
 
       .card-content {
-        padding: 16px 0;
+        padding: 16px;
+        flex-grow: 1;
       }
 
       .card h2 {
@@ -66,18 +66,6 @@
         font-weight: bold;
       }
 
-      .social-icons {
-        display: flex;
-        justify-content: space-evenly;
-        padding: 8px 0;
-      }
-
-      .social-icons a {
-        text-decoration: none;
-        font-size: 24px;
-        color: #555;
-      }
-
       .details-link {
         text-align: center;
         display: block;
@@ -86,131 +74,84 @@
         text-decoration: none;
         font-weight: bold;
       }
+
+      .buy-button {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        text-align: center;
+        margin-top: 8px;
+        transition: background-color 0.3s ease;
+      }
+
+      .buy-button:hover {
+        background-color: #218838;
+      }
     </style>
   </head>
+
   <body>
-    <div class="container">
-      <div class="card">
-        <img src="karman.jpg" alt="Pet Image" />
-        <div class="card-content">
-          <h2>Leo - 5.5 years old</h2>
-          <p>Male, Senior</p>
-          <p>Pune, Maharashtra</p>
-          <div class="contact-details">
-            <p><span>Name:</span> Nikita</p>
-            <p><span>Number:</span> Contact Now</p>
-          </div>
-          <a href="#" class="details-link">See more details ↗</a>
-        </div>
-      </div>
-      <div class="card">
-        <img src="karman.jpg" alt="Pet Image" />
-        <div class="card-content">
-          <h2>Leo - 5.5 years old</h2>
-          <p>Male, Senior</p>
-          <p>Pune, Maharashtra</p>
-          <div class="contact-details">
-            <p><span>Name:</span> Nikita</p>
-            <p><span>Number:</span> Contact Now</p>
-          </div>
-          <a href="#" class="details-link">See more details ↗</a>
-        </div>
-      </div>
-      <div class="card">
-        <img src="karman.jpg" alt="Pet Image" />
-        <div class="card-content">
-          <h2>Leo - 5.5 years old</h2>
-          <p>Male, Senior</p>
-          <p>Pune, Maharashtra</p>
-          <div class="contact-details">
-            <p><span>Name:</span> Nikita</p>
-            <p><span>Number:</span> Contact Now</p>
-          </div>
-          <a href="#" class="details-link">See more details ↗</a>
-        </div>
-      </div>
-      <div class="card">
-        <img src="karman.jpg" alt="Pet Image" />
-        <div class="card-content">
-          <h2>Leo - 5.5 years old</h2>
-          <p>Male, Senior</p>
-          <p>Pune, Maharashtra</p>
-          <div class="contact-details">
-            <p><span>Name:</span> Nikita</p>
-            <p><span>Number:</span> Contact Now</p>
-          </div>
-          <a href="#" class="details-link">See more details ↗</a>
-        </div>
-      </div>
-      <div class="card">
-        <img src="karman.jpg" alt="Pet Image" />
-        <div class="card-content">
-          <h2>Leo - 5.5 years old</h2>
-          <p>Male, Senior</p>
-          <p>Pune, Maharashtra</p>
-          <div class="contact-details">
-            <p><span>Name:</span> Nikita</p>
-            <p><span>Number:</span> Contact Now</p>
-          </div>
-          <a href="#" class="details-link">See more details ↗</a>
-        </div>
-      </div>
-      <div class="card">
-        <img src="karman.jpg" alt="Pet Image" />
-        <div class="card-content">
-          <h2>Leo - 5.5 years old</h2>
-          <p>Male, Senior</p>
-          <p>Pune, Maharashtra</p>
-          <div class="contact-details">
-            <p><span>Name:</span> Nikita</p>
-            <p><span>Number:</span> Contact Now</p>
-          </div>
-          <a href="#" class="details-link">See more details ↗</a>
-        </div>
-      </div>
+    <div id="container"></div>
 
-      <div class="card">
-        <img src="karman.jpg" alt="Pet Image" />
+    <script>
+      const pets = [
+        {
+          name: "Leo",
+          age: 5.5,
+          gender: "Male",
+          type: "Senior",
+          location: "Pune",
+          owner: "Nikita",
+          image: "karman.jpg"
+        },
+        {
+          name: "Max",
+          age: 3,
+          gender: "Male",
+          type: "Adult",
+          location: "Mumbai",
+          owner: "Rohan",
+          image: "cat.jpg"
+        },
+        {
+          name: "Bella",
+          age: 2,
+          gender: "Female",
+          type: "Young",
+          location: "Delhi",
+          owner: "Simran",
+          image: "busky.jpg"
+        }
+      ];
 
+      const container = document.getElementById("container");
+
+      pets.forEach((pet) => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+        <img src="${pet.image}" alt="${pet.name}" />
         <div class="card-content">
-          <h2>Leo - 5.5 years old</h2>
-          <p>Male, Senior</p>
-          <p>Pune, Maharashtra</p>
-
+          <h2>${pet.name} - ${pet.age} years old</h2>
+          <p>${pet.gender}, ${pet.type}</p>
+          <p>${pet.location}</p>
           <div class="contact-details">
-            <p><span>Name:</span> Nikita</p>
+            <p><span>Name:</span> ${pet.owner}</p>
             <p><span>Number:</span> Contact Now</p>
           </div>
-
-          <a href="#" class="details-link">See more details ↗</a>
+          <a href="larger-card.html?${new URLSearchParams(pet)}" target="_blank" class="details-link">See more details ↗</a>
+          <button class="buy-button">Buy Now</button>
         </div>
-      </div>
-      <div class="card">
-        <img src="karman.jpg" alt="Pet Image" />
-        <div class="card-content">
-          <h2>Leo - 5.5 years old</h2>
-          <p>Male, Senior</p>
-          <p>Pune, Maharashtra</p>
-          <div class="contact-details">
-            <p><span>Name:</span> Nikita</p>
-            <p><span>Number:</span> Contact Now</p>
-          </div>
-          <a href="#" class="details-link">See more details ↗</a>
-        </div>
-      </div>
-      <div class="card">
-        <img src="karman.jpg" alt="Pet Image" />
-        <div class="card-content">
-          <h2>Max - 3 years old</h2>
-          <p>Male, Adult</p>
-          <p>Mumbai, Maharashtra</p>
-          <div class="contact-details">
-            <p><span>Name:</span> Rohan</p>
-            <p><span>Number:</span> Contact Now</p>
-          </div>
-          <a href="#" class="details-link">See more details ↗</a>
-        </div>
-      </div>
-    </div>
+      `;
+        container.appendChild(card);
+      });
+    </script>
   </body>
 </html>
