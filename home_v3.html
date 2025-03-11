@@ -11,26 +11,50 @@
             box-sizing: border-box;
             font-family: Arial, sans-serif;
         }
-
         .headbox {
             background-image: url("https://cdn.pixabay.com/photo/2023/08/18/15/02/dog-8198719_1280.jpg");
             background-size: cover;
             background-position: center;
             height: 500px;
-            display: block;
             width: 100%;
-            justify-content: left;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: flex-start; 
+            align-items: flex-start;
+            padding: 50px;
+            gap: 20px;
+            position: relative; /* Important for overlay */
+            overflow: hidden; 
         }
+
+        .headbox::before {
+            content: ""; /* Mandatory for pseudo-elements */
+            position: absolute; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)); /* Gradient Black overlay */
+            z-index: 0; /* Keep it behind text */
+        }
+
+        .bigfont, .headbox h4 {
+            position: relative; /* Brings text above the overlay */
+            z-index: 1; 
+            color: white;
+            justify-content: center;
+        }
+
         .bigfont{
             font-size: 150px;
             color: white;
-            margin-left: 50px;
-            margin-top: 200px;
-     }
+            margin:0;
+        }
 
         body {
             text-align: center;
-            padding: 20px;
+            margin: 0;
+            padding: 0;
         }
 
         h1 {

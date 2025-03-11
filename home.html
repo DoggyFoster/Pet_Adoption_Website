@@ -4,7 +4,106 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Pet Adoption Site</title>
-    <link href="home.css" rel="stylesheet" />
+    <style>
+      body{
+        margin: 0;
+        padding: 0;
+        font-family: 'times new roman', sans-serif;
+      }
+
+      .logo {
+        border-radius: 50%;
+        height: 50px;
+        width: 50px;
+      }
+
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        /* height: 250px; */
+        border: 1px solid #000000;
+      }
+
+      .navbar {
+        padding: 15px 15px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        text-decoration: none;
+        align-items: center;
+        border: 1px solid #000000;
+      }
+
+      .links {
+        text-decoration: none;
+        /* color: black; */
+      }
+
+      .home_f{
+        height: calc(100vh - 100px); /* Adjust 100px to the height of your navbar */
+        border: none;
+        justify-content: space-between;
+        padding: 5px 5px;
+      }
+
+      .bgplex{
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 25px 10px;
+      }
+
+      .bgplex img{
+        width: 100%;
+        height: 100%;
+      }
+
+      .bgplex img:hover{
+        transform: scale(1.1);
+        transition: transform 0.5s;
+      }
+
+      .twohead{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        gap: 20px;
+        padding: 25px 10px;
+      }
+
+      .headleft{
+        display: flex;
+        flex:1;
+        flex-direction: column;
+        justify-content: left;
+        align-items: center;
+        gap: 20px;
+        padding: 25px 15px;
+      }
+
+      .headright{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        padding: 10px 10px;
+      }
+
+      .formtoadopt{
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        padding: 25px 55px;
+      }
+    </style>
   </head>
 
   <body>
@@ -31,14 +130,6 @@
       <a class="links" href="contact_us.html" target="home_f">Contact us</a>
     </div>
 
-    <!-- <h1>REVIEWS, FEATURED PETS, WHY CHOOSE "ADOPT A PAW"</h1> -->
-    <!-- <div>
-      <ul>
-        <li>WHY CHOOSE "ADOPT A PAW"</li>
-        <li>FEATURED PETS</li>
-        <li>REVIEWS</li>
-      </ul>
-    </div> -->
     <iframe width="100%" class="home_f" name="home_f" src="home_v3.html"></iframe>
     <hr/>
     <div class="about-us" style="text-align: center; font-size: smaller;">
