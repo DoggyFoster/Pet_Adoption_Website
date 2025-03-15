@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pet Adoption Website</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        font-family: "Montserrat", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        overflow-x: hidden;
+        scroll-snap-type: y mandatory;
+        height: 100vh;
+        scroll-behavior: smooth;
+        overflow-y: auto;
+      }
+
+      .main-bg {
+        min-height: 100vh;
+        background-image: url(https://media.istockphoto.com/id/1276788283/photo/young-woman-with-laughing-corgi-puppy-nature-background.jpg?s=612x612&w=0&k=20&c=nOiBnVA13BupVn0t7o5fCytV5ZROgNgSWkQas3IuHIw=);
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        scroll-snap-align: start;
+      }
+
+      .main-bg::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(3px);
+        z-index: 1;
+      }
+
+      .main-bg.bg2 {
+        min-height: 100vh;
+        background-image: url(data:image/jpeg;base64,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);
+      }
+
+      .main-bg h1,
+      .main-bg h4 {
+        color: white;
+        position: relative;
+        z-index: 2;
+      }
+
+      .main-bg h1 {
+        font-size: 4rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .main-bg h4 {
+        font-size: 1.5rem;
+        font-weight: 400;
+      }
+
+      .carousel-container {
+        min-height: 100vh;
+        background-color: #f5f5f5;
+        padding: 4rem 0;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        scroll-snap-align: start;
+      }
+
+      .carousel-title {
+        color: #333;
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 2.5rem;
+      }
+
+      .carousel-wrapper {
+        position: relative;
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .carousel {
+        display: flex;
+        gap: 20px;
+        scroll-behavior: smooth;
+        overflow-x: auto;
+        scrollbar-width: none;
+        padding: 20px 10px;
+        scroll-snap-type: x mandatory;
+      }
+
+      .carousel::-webkit-scrollbar {
+        display: none;
+      }
+
+      .card {
+        flex: 0 0 300px;
+        background-color: #ffffff;
+        border-radius: 20px;
+        padding: 20px;
+        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+        text-align: center;
+        border: none;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+        scroll-snap-align: center;
+      }
+
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .card img {
+        width: 100%;
+        height: 180px;
+        border-radius: 12px;
+        object-fit: cover;
+        margin-bottom: 15px;
+      }
+
+      .card h2 {
+        font-size: 24px;
+        margin: 10px 0;
+        color: #333;
+      }
+
+      .card p {
+        font-size: 16px;
+        color: #666;
+        margin-bottom: 8px;
+      }
+
+      .card p:last-child {
+        color: #ff6b6b;
+        font-weight: 600;
+      }
+
+      .nav-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        border: none;
+        cursor: pointer;
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        transition: background-color 0.3s ease;
+      }
+
+      .nav-button:hover {
+        background-color: rgba(0, 0, 0, 0.9);
+      }
+
+      .prev {
+        left: -25px;
+      }
+
+      .next {
+        right: -25px;
+      }
+
+      .adopt-button {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 10px 25px;
+        background-color: blueviolet;
+        color: white;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .adopt-button:hover {
+        background-color: darkslateblue;
+        transform: scale(1.05);
+      }
+
+      .about-us {
+        text-align: center;
+        font-size: smaller;
+        background-color: #f0f8f0; /* Pale greenish white */
+        padding: 20px;
+        border-top: 4px solid #3e6259;
+        color: #4f4f4f;
+      }
+
+      .navbar-perm {
+        position: fixed;
+        z-index: 20;
+        top: 0;
+        width: 70%;
+        height: 30px;
+        display: flex;
+        justify-content: space-between;
+        padding-left: 10px;
+        padding-right: 10px;
+        background-color: black;
+        color: whitesmoke;
+        border: 1px solid darkgray;
+        backdrop-filter: blur(8px);
+        z-index: 12;
+        border-radius: 20px;
+        transform: translateY(12px) translateX(22%);
+      }
+      li {
+        display: inline-block;
+        margin: 10px;
+        transform: translateY(-5px);
+      }
+      a {
+        color: whitesmoke;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar-perm">
+      <div class="navbar-links">
+        <nav>
+          <ul style="list-style: none">
+            <li style="display: inline-block; margin-right: 10px">
+              <a href="home-redesign-v2.html" style="color: whitesmoke">Home</a>
+            </li>
+            <li style="display: inline-block; margin-right: 10px">
+              <a href="adopt.html" style="color: whitesmoke">Adopt</a>
+            </li>
+            <li style="display: inline-block; margin-right: 10px">
+              <a href="care_guide.html" style="color: whitesmoke">Care Guide</a>
+            </li>
+            <li style="display: inline-block; margin-right: 10px">
+              <a href="accessories.html" style="color: whitesmoke"
+                >Accessories</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="navbar-logo">
+        <h3>DoggyFoster</h3>
+      </div>
+    </div>
+    <section class="main-bg">
+      <h1 style="color: blueviolet">DoggyFoster</h1>
+      <h1>READY TO ADOPT A PET?</h1>
+      <h4>To get started, browse our available pets below</h4>
+    </section>
+
+    <section class="carousel-container">
+      <h1>Featured Pets</h1>
+      <h4 style="text-align: center">Adopt a Dog from the Pound</h4>
+      <br />
+      <div class="carousel-wrapper">
+        <button class="nav-button prev" onclick="scrollCarousel(-1)">
+          &#10094;
+        </button>
+        <div class="carousel" id="carousel">
+          <div class="card">
+            <img
+              src="https://cdn.pixabay.com/photo/2023/08/18/15/02/dog-8198719_1280.jpg"
+              alt="Rico the Labrador"
+            />
+            <h2>RICO</h2>
+            <p>Labrador Retriever</p>
+            <p>Male, 3 yrs 10 mos</p>
+            <p>Beverly Hills, CA</p>
+            <a href="#" class="adopt-button">Meet Rico</a>
+          </div>
+          <div class="card">
+            <img
+              src="https://cdn.pixabay.com/photo/2016/12/13/05/15/puppy-1903313_1280.jpg"
+              alt="Jesse the Spaniel"
+            />
+            <h2>JESSE</h2>
+            <p>English Springer Spaniel</p>
+            <p>Male, Young</p>
+            <p>Los Angeles, CA</p>
+            <a href="#" class="adopt-button">Meet Jesse</a>
+          </div>
+          <div class="card">
+            <img
+              src="https://cdn.pixabay.com/photo/2019/08/07/14/11/dog-4390885_1280.jpg"
+              alt="McCabe the Spaniel"
+            />
+            <h2>McCABE</h2>
+            <p>English Springer Spaniel</p>
+            <p>Male, Adult</p>
+            <p>Los Angeles, CA</p>
+            <a href="#" class="adopt-button">Meet McCabe</a>
+          </div>
+          <div class="card">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Cute_dog.jpg/2560px-Cute_dog.jpg"
+              alt="Luna the Beagle"
+            />
+            <h2>LUNA</h2>
+            <p>Beagle Mix</p>
+            <p>Female, 1 yr 4 mos</p>
+            <p>Santa Monica, CA</p>
+            <a href="#" class="adopt-button">Meet Luna</a>
+          </div>
+          <div class="card">
+            <img
+              src="https://cdn.pixabay.com/photo/2017/09/25/13/12/puppy-2785074_1280.jpg"
+              alt="Max the Golden Retriever"
+            />
+            <h2>MAX</h2>
+            <p>Golden Retriever</p>
+            <p>Male, 2 yrs</p>
+            <p>Pasadena, CA</p>
+            <a href="#" class="adopt-button">Meet Max</a>
+          </div>
+          <div class="card">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTROLLARPFP-cJesIVqS44x8QONuh8rlMQjjQ&s"
+              alt="Bella the Corgi"
+            />
+            <h2>BELLA</h2>
+            <p>Pembroke Welsh Corgi</p>
+            <p>Female, 8 mos</p>
+            <p>West Hollywood, CA</p>
+            <a href="#" class="adopt-button">Meet Bella</a>
+          </div>
+        </div>
+        <button class="nav-button next" onclick="scrollCarousel(1)">
+          &#10095;
+        </button>
+      </div>
+    </section>
+
+    <script>
+      function scrollCarousel(direction) {
+        const carousel = document.getElementById("carousel");
+        const cardWidth = carousel.querySelector(".card").offsetWidth + 20; // card width + gap
+        carousel.scrollBy({ left: direction * cardWidth, behavior: "smooth" });
+      }
+    </script>
+    <section class="main-bg bg2">
+      <h1>Choose a stray and give him a warm home</h1>
+    </section>
+    <section class="about-us">
+      <h2>About Us</h2>
+      <p>
+        Welcome to Adopt a Paw! Our mission is to connect loving families with
+        pets in need of adoption. We believe every pet deserves a chance to be
+        loved and cared for.
+      </p>
+      <p>
+        Our passionate team works tirelessly to ensure each pet is matched with
+        the perfect family. We provide resources and support to help new pet
+        owners with the adoption process and beyond.
+      </p>
+      <p>
+        Thank you for visiting our site and considering adoption. Together, we
+        can make a difference in the lives of these wonderful animals.
+      </p>
+    </section>
+  </body>
+</html>
