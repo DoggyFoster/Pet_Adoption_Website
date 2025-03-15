@@ -1,157 +1,126 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pet Profiles</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Pet Profiles</title>
 
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        background-color: #f9f9f9;
-        margin: 0;
-        padding: 0;
-      }
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                background-color: #f9f9f9;
+                margin: 0;
+                padding: 0;
+            }
 
-      #container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-        padding: 20px;
-        width: 90%;
-        max-width: 1200px;
-      }
+            #container {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+                padding: 20px;
+                width: 90%;
+                max-width: 1200px;
+            }
 
-      .card {
-        background: #fff;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      }
+            .card {
+                background: #fff;
+                border-radius: 12px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
 
-      .card img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        border-radius: 8px 8px 0 0;
-      }
+            .card img {
+                width: 100%;
+                height: 300px;
+                object-fit: cover;
+                border-radius: 8px 8px 0 0;
+            }
 
-      .card-content {
-        padding: 16px;
-        flex-grow: 1;
-      }
+            .card-content {
+                padding: 16px;
+                flex-grow: 1;
+            }
 
-      .card h2 {
-        margin: 0 0 8px;
-        font-size: 22px;
-      }
+            .card h2 {
+                margin: 0 0 8px;
+                font-size: 22px;
+            }
 
-      .card p {
-        margin: 4px 0;
-        color: #555;
-      }
+            .card p {
+                margin: 4px 0;
+                color: #555;
+            }
 
-      .contact-details {
-        margin: 16px 0;
-      }
+            .contact-details {
+                margin: 16px 0;
+            }
 
-      .contact-details span {
-        font-weight: bold;
-      }
+            .contact-details span {
+                font-weight: bold;
+            }
 
-      .details-link {
-        text-align: center;
-        display: block;
-        padding: 12px;
-        color: #007bff;
-        text-decoration: none;
-        font-weight: bold;
-      }
+            .details-link {
+                text-align: center;
+                display: block;
+                padding: 12px;
+                color: #007bff;
+                text-decoration: none;
+                font-weight: bold;
+            }
 
-      .buy-button {
-        display: block;
-        width: 100%;
-        padding: 12px;
-        background-color: #28a745;
-        color: white;
-        border: none;
-        border-radius: 8px;
-        font-size: 16px;
-        font-weight: bold;
-        cursor: pointer;
-        text-align: center;
-        margin-top: 8px;
-        transition: background-color 0.3s ease;
-      }
+            .buy-button {
+                display: block;
+                width: 100%;
+                padding: 12px;
+                background-color: #28a745;
+                text-decoration: none;
+                color: white;
+                border: none;
+                border-radius: 8px;
+                font-size: 16px;
+                font-weight: bold;
+                cursor: pointer;
+                text-align: center;
+                margin-top: 8px;
+                transition: background-color 0.3s ease;
+            }
 
-      .buy-button:hover {
-        background-color: #218838;
-      }
-    </style>
-  </head>
+            .buy-button:hover {
+                background-color: #218838;
+            }
 
-  <body>
-    <div id="container"></div>
+            .cart-button {
+                display: block;
+                width: 100%;
+                padding: 12px;
+                background-color: #d1b70f;
+                text-decoration: none;
+                color: white;
+                border: none;
+                border-radius: 8px;
+                font-size: 16px;
+                font-weight: bold;
+                cursor: pointer;
+                text-align: center;
+                margin-top: 8px;
+                transition: background-color 0.3s ease;
+            }
+            .cart-button:hover {
+                background-color: #ad980e;
+            }
+        </style>
+    </head>
 
-    <script>
-      const pets = [
-        {
-          name: "Leo",
-          age: 5.5,
-          gender: "Male",
-          type: "Senior",
-          location: "Pune",
-          owner: "Nikita",
-          image: "karman.jpg"
-        },
-        {
-          name: "Max",
-          age: 3,
-          gender: "Male",
-          type: "Adult",
-          location: "Mumbai",
-          owner: "Rohan",
-          image: "cat.jpg"
-        },
-        {
-          name: "Bella",
-          age: 2,
-          gender: "Female",
-          type: "Young",
-          location: "Delhi",
-          owner: "Simran",
-          image: "busky.jpg"
-        }
-      ];
+    <body>
+        <div id="container"></div>
 
-      const container = document.getElementById("container");
-
-      pets.forEach((pet) => {
-        const card = document.createElement("div");
-        card.className = "card";
-        card.innerHTML = `
-        <img src="${pet.image}" alt="${pet.name}" />
-        <div class="card-content">
-          <h2>${pet.name} - ${pet.age} years old</h2>
-          <p>${pet.gender}, ${pet.type}</p>
-          <p>${pet.location}</p>
-          <div class="contact-details">
-            <p><span>Name:</span> ${pet.owner}</p>
-            <p><span>Number:</span> Contact Now</p>
-          </div>
-          <a href="larger-card.html?${new URLSearchParams(pet)}" target="_blank" class="details-link">See more details ↗</a>
-          <button class="buy-button">Buy Now</button>
-        </div>
-      `;
-        container.appendChild(card);
-      });
-    </script>
-  </body>
+        <script src="adopt.js"></script>
+    </body>
 </html>
