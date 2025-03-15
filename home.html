@@ -251,7 +251,7 @@
         <nav>
           <ul style="list-style: none">
             <li style="display: inline-block; margin-right: 10px">
-              <a href="home-redesign-v2.html" style="color: whitesmoke">Home</a>
+              <a href="home.html" style="color: whitesmoke">Home</a>
             </li>
             <li style="display: inline-block; margin-right: 10px">
               <a href="adopt.html" style="color: whitesmoke">Adopt</a>
@@ -362,8 +362,7 @@
     <script>
       function scrollCarousel(direction) {
         const carousel = document.getElementById("carousel");
-        const cardWidth = carousel.querySelector(".card").offsetWidth + 20; // card width + gap
-        carousel.scrollBy({ left: direction * cardWidth, behavior: "smooth" });
+        carousel.scrollBy({ left: direction * 270, behavior: "smooth" });
       }
     </script>
     <section class="main-bg bg2">
