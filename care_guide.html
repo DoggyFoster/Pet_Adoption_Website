@@ -39,26 +39,34 @@
 
       .navbar-perm {
         position: relative;
-        top: 0;
         width: 70%;
         height: 30px;
         display: flex;
+        transform: translateY(-12px);
         justify-content: space-between;
-        padding-left: 10px;
-        padding-right: 10px;
+        padding: 0 20px;
         background-color: black;
         color: whitesmoke;
         border: 1px solid darkgray;
         backdrop-filter: blur(8px);
         border-radius: 20px;
-        transform: translateY(-10px) translateX(22%);
-        margin-bottom: 10px;
+        margin: 0 auto 20px auto;
       }
       .navbar-links {
-        transform: translateY(-10px) translateX(5px);
+        align-self: center;
+      }
+      .navbar-links ul {
+        padding: 0;
+        margin: 0;
       }
       .navbar-logo {
-        transform: translateY(-14px) translateX(-5px);
+        align-self: right;
+      }
+      .navbar-links img {
+        height: 20px;
+        width: 20px;
+        background-size: contain;
+        vertical-align: middle;
       }
       li {
         display: inline-block;
@@ -88,11 +96,19 @@
                 >Accessories</a
               >
             </li>
+            <li style="display: inline-block; margin-right: 10px">
+              <a href="" style="color: whitesmoke"
+                >(<img
+                  src="images/shooping-cart-img.png"
+                  alt="shopping-cart"
+                />)</a
+              >
+            </li>
           </ul>
         </nav>
       </div>
       <div class="navbar-logo">
-        <h3>DoggyFoster</h3>
+        <h3 style="margin: 0; transform: translateY(2px);">DoggyFoster</h3>
       </div>
     </div>
     <h1
