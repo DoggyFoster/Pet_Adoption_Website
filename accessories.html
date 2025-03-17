@@ -21,9 +21,75 @@
         background-color: gold;
 
       }
+      .navbar-perm {
+        position: absolute;
+        z-index: 20;
+        width: 70%;
+        height: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 10px;
+        padding-right: 10px;
+        background-color: black;
+        color: whitesmoke;
+        border: 1px solid darkgray;
+        backdrop-filter: blur(8px);
+        border-radius: 20px;
+        top: 12px;
+        left: 50%;
+        transform: translateY(-5px) translateX(-50%);
+      }
+      li {
+        display: inline-block;
+        margin: 10px;
+      }
+      a {
+        color: whitesmoke;
+        text-decoration: none;
+      }
+      .navbar-links img{
+          height: 20px;
+          width:20px;
+          background-size: contain;
+          vertical-align: middle;
+      }
     </style>
   </head>
   <body>
+    <div class="navbar-perm">
+      <div class="navbar-links">
+        <nav>
+          <ul style="list-style: none">
+            <li style="display: inline-block; margin-right: 10px">
+              <a href="home.html" style="color: whitesmoke">Home</a>
+            </li>
+            <li style="display: inline-block; margin-right: 10px">
+              <a href="adopt.html" style="color: whitesmoke">Adopt</a>
+            </li>
+            <li style="display: inline-block; margin-right: 10px">
+              <a href="care_guide.html" style="color: whitesmoke">Care Guide</a>
+            </li>
+            <li style="display: inline-block; margin-right: 10px">
+              <a href="accessories.html" style="color: whitesmoke"
+                >Accessories</a
+              >
+            </li>
+            <li style="display: inline-block; margin-right: 10px">
+              <a href="" style="color: whitesmoke"
+                >(<img
+                  src="images/shooping-cart-img.png"
+                  alt="shopping-cart"
+                />)</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="navbar-logo">
+        <h3 style="margin: 0; transform: translateY(2px);">DoggyFoster</h3>
+      </div>
+    </div>
     <div class="album py-5 bg-body-tertiary">
       <div class="container">
   
