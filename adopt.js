@@ -1,7 +1,7 @@
 const pets = [
     {
-        name: "Leo",
-        age: 5.5,
+        name: "Karman",
+        age: 7,
         gender: "Male",
         type: "Senior",
         location: "Pune",
@@ -20,12 +20,12 @@ const pets = [
         cart: false,
     },
     {
-        name: "Bella",
-        age: 2,
+        name: "Busky",
+        age: 3,
         gender: "Female",
         type: "Young",
         location: "Delhi",
-        owner: "Simran",
+        owner: "Mithuraa",
         image: "images/busky.jpg",
         cart: false,
     },

@@ -35,6 +35,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // }
 
     const petsInCart = JSON.parse(localStorage.getItem("petsInCart")) || [];
+    const accessoriesInCart =
+        JSON.parse(localStorage.getItem("products")) || [];
+
     petsInCart.forEach((element) => {
         // Create pet card
         const petCard = document.createElement("div");
@@ -57,6 +60,27 @@ document.addEventListener("DOMContentLoaded", () => {
         const summaryContainer = document.getElementById("pet-summary");
         if (summaryContainer) {
             summaryContainer.appendChild(petCard);
+        } else {
+            console.error("Error: summary-container not found!");
+        }
+    });
+
+    accessoriesInCart.forEach((product) => {
+        const card = document.createElement("div");
+        card.className = "accessories-card";
+
+        card.innerHTML = `
+            <div class="pet-image">
+                <img src="${product.image}" />
+            </div>
+            <div class="pet-info">
+                <h2>${product.name}</h2>
+            </div>
+        `;
+
+        const summaryContainer = document.getElementById("pet-summary");
+        if (summaryContainer) {
+            summaryContainer.appendChild(card);
         } else {
             console.error("Error: summary-container not found!");
         }
