@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #f0f0f0, #d1d1d1);
+        }
+        
+        /* Background animation */
+        .floating-cart {
+            position: absolute;
+            font-size: 30px;
+            opacity: 0.2;
+            animation: float 6s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0.2; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        .cart {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .cart-item img {
+            width: 50px;
+            margin-right: 10px;
+        }
+
+        .total {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        button {
+            background: #ff6f61;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        
+        button:hover {
+            background: #e05a4f;
+        }
+    </style>
+</head>
+<body>
+    <h2> Cart</h2>
+    
+    <!-- Form to add items -->
+    <div class="add-item-form">
+        <button onclick="redirectToAccessories()">Add Item</button>
+    </div>
+
+    <div class="cart">
+        <div id="cart-items"></div>
+        <div class="total">Total: $<span id="total-price">0</span></div>
+    </div>
+
+    <script>
+        let cart = [];
+
+        function getQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            const image = params.get("image");
+            const price = parseFloat(params.get("price"));
+            return { image, price };
+        }
+
+        function addToCart(image, price) {
+            if (image && !isNaN(price)) {
+                cart.push({ image, price });
+                saveCart();
+                updateCart();
+            }
+        }
+
+        function updateCart() {
+            let cartItems = document.getElementById("cart-items");
+            let totalPrice = document.getElementById("total-price");
+            cartItems.innerHTML = "";
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                total += item.price;
+                cartItems.innerHTML += `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="Product">
+                        <span>$${item.price}</span>
+                        <button onclick="removeFromCart(${index})">Remove</button>
+                    </div>`;
+            });
+
+            totalPrice.textContent = total;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            saveCart();
+            updateCart();
+        }
+
+        function redirectToAccessories() {
+            window.location.href = 'accessories.html';
+        }
+
+        function saveCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        function loadCart() {
+            const savedCart = localStorage.getItem('cart');
+            if (savedCart) {
+                cart = JSON.parse(savedCart);
+                updateCart();
+            }
+        }
+
+        // Get product from URL and add to cart
+        const product = getQueryParams();
+        if (product.image) {
+            addToCart(product.image, product.price);
+        }
+
+        // Load cart from localStorage
+        loadCart();
+
+        // Generate floating cart icons in the background
+        function createFloatingCarts() {
+            for (let i = 0; i < 15; i++) {
+                let cartIcon = document.createElement("div");
+                cartIcon.innerHTML = "🛒";  // Shopping cart emoji
+                cartIcon.classList.add("floating-cart");
+
+                let randomSize = Math.random() * 20 + 20; // Random size between 20px and 40px
+                cartIcon.style.fontSize = randomSize + "px";
+                cartIcon.style.left = Math.random() * window.innerWidth + "px";
+                cartIcon.style.animationDuration = (Math.random() * 5 + 3) + "s"; // 3s - 8s
+
+                document.body.appendChild(cartIcon);
+
+                setTimeout(() => {
+                    cartIcon.remove();
+                    createFloatingCarts();  // Recreate new carts when old ones disappear
+                }, 8000);
+            }
+        }
+
+        createFloatingCarts(); // Start animation
+    </script>
+</body>
+</html>
