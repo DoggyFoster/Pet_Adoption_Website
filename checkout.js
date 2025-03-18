@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const petsInCart = JSON.parse(localStorage.getItem("petsInCart")) || [];
     const accessoriesInCart =
-        JSON.parse(localStorage.getItem("products")) || [];
+        JSON.parse(localStorage.getItem("productsInCart")) || [];
 
     petsInCart.forEach((element) => {
         // Create pet card
