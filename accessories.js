@@ -1,23 +1,65 @@
 const products = [
     {
-        name: "Dog Collar",
+        name: "Collar",
         image: "images/coller.png",
         description:
             "Keep your dog safe, stylish, and comfortable with our premium-quality collars.",
         cart: false,
     },
     {
-        name: "Dog Food",
+        name: "Food",
         image: "images/food.png",
         description:
             "Give your furry friend the nutrition they deserve with our wholesome, delicious, and balanced dog food.",
         cart: false,
     },
     {
-        name: "Dog Bowl",
+        name: "Bowl",
         image: "images/bowl.png",
         description:
             "A durable, easy-to-clean food and water bowl for your pet's everyday needs.",
+        cart: false,
+    },
+    {
+        name: "Medicine",
+        image: "images/medicine.jpeg",
+        description:
+            "Keep your pup healthy and happy with our trusted, vet-approved dog medicines for every need.",
+        cart: false,
+    },
+    {
+        name: "Rope",
+        image: "images/rope.png",
+        description:
+            "Keep your dog secure and comfortable with our strong, durable, and tangle-free dog rope.",
+        cart: false,
+    },
+    {
+        name: "Mask",
+        image: "images/mask.jpg",
+        description:
+            "Stay protected in style with our comfortable, breathable, and high-quality masks",
+        cart: false,
+    },
+    {
+        name: "House",
+        image: "images/house.png",
+        description:
+            "Give your furry friend a cozy and secure retreat with our durable, weatherproof dog houses.",
+        cart: false,
+    },
+    {
+        name: "Biscuit",
+        image: "images/biscuit.webp",
+        description:
+            "Treat your pup to crunchy, delicious, and nutritious dog biscuits they’ll love!",
+        cart: false,
+    },
+    {
+        name: "Conditioner",
+        image: "images/conditioner.jpeg",
+        description:
+            "Keep your dog's coat soft, shiny, and healthy with our nourishing dog conditioner!",
         cart: false,
     },
 ];
