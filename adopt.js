@@ -29,6 +29,16 @@ const pets = [
         image: "images/busky.jpg",
         cart: false,
     },
+    {
+        name: "akdjfaldfkj ;",
+        age: 2,
+        gender: "Female",
+        type: "Young",
+        location: "Delhi",
+        owner: "Simran",
+        image: "images/busky.jpg",
+        cart: false,
+    },
 ];
 
 const container = document.getElementById("container");
@@ -60,32 +70,27 @@ pets.forEach((pet) => {
     container.appendChild(card);
 });
 
+// buy-now button
 let buyButtons = document.getElementsByClassName("buy-button");
-
 [...buyButtons].forEach((element) => {
     element.addEventListener("click", checkout);
 });
 
+// function to happend with buy-now is clicked
 function checkout() {
     const cartPets = pets.filter((pet) => pet.cart);
     console.log(cartPets);
 }
 
+// add to cart button
 let cartButtons = document.getElementsByClassName("cart-button");
-
-// [...cartButtons].forEach((element) => {
-//     element.addEventListener("click", function () {
-//         cart(element.dataset.name);
-//     });
-// });
-//
-
 document.querySelectorAll(".cart-button").forEach((button) => {
     button.addEventListener("click", function () {
         cart(button.dataset.name, this);
     });
 });
 
+// function to add a pet to cart
 function cart(name, btn) {
     let pet = pets.find((pet) => pet.name === name);
     pet.cart = !pet.cart;
@@ -97,4 +102,8 @@ function cart(name, btn) {
     }
 
     console.log(pet.cart);
+
+    // find all pets in cart
+    let petsInCart = pets.filter((pet) => pet.cart);
+    localStorage.setItem("petsInCart", JSON.stringify(petsInCart));
 }
