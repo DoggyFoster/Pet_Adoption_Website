@@ -79,7 +79,7 @@
     </div>
 
     <script>
-        let cart = [];
+        let accessories_cart = [];
 
         function getQueryParams() {
             const params = new URLSearchParams(window.location.search);
@@ -89,8 +89,9 @@
         }
 
         function addToCart(image, price) {
+            loadCart();
             if (image && !isNaN(price)) {
-                cart.push({ image, price });
+                accessories_cart.push({ image, price });
                 saveCart();
                 updateCart();
             }
@@ -102,7 +103,7 @@
             cartItems.innerHTML = "";
             let total = 0;
 
-            cart.forEach((item, index) => {
+            accessories_cart.forEach((item, index) => {
                 total += item.price;
                 cartItems.innerHTML += `
                     <div class="cart-item">
@@ -110,13 +111,14 @@
                         <span>$${item.price}</span>
                         <button onclick="removeFromCart(${index})">Remove</button>
                     </div>`;
+            saveCart();
             });
 
             totalPrice.textContent = total;
         }
 
         function removeFromCart(index) {
-            cart.splice(index, 1);
+            accessories_cart.splice(index, 1);
             saveCart();
             updateCart();
         }
@@ -126,13 +128,13 @@
         }
 
         function saveCart() {
-            localStorage.setItem('cart', JSON.stringify(cart));
+            localStorage.setItem('cart', JSON.stringify(accessories_cart));
         }
 
         function loadCart() {
             const savedCart = localStorage.getItem('cart');
             if (savedCart) {
-                cart = JSON.parse(savedCart);
+                accessories_cart = JSON.parse(savedCart);
                 updateCart();
             }
         }
@@ -166,6 +168,7 @@
                 }, 8000);
             }
         }
+        console.log(accessories_cart);
 
         createFloatingCarts(); // Start animation
     </script>
