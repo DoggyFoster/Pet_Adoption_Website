@@ -1,7 +1,7 @@
 const pets = [
     {
-        name: "Leo",
-        age: 5.5,
+        name: "Karman",
+        age: 7,
         gender: "Male",
         type: "Senior",
         location: "Pune",
@@ -20,7 +20,17 @@ const pets = [
         cart: false,
     },
     {
-        name: "Bella",
+        name: "Busky",
+        age: 3,
+        gender: "Female",
+        type: "Young",
+        location: "Delhi",
+        owner: "Mithuraa",
+        image: "images/busky.jpg",
+        cart: false,
+    },
+    {
+        name: "akdjfaldfkj ;",
         age: 2,
         gender: "Female",
         type: "Young",
@@ -31,62 +41,70 @@ const pets = [
     },
 ];
 
-const container = document.getElementById("container");
+Init();
+AddListenerstoButtons();
+UpdateCartButtons();
 
-pets.forEach((pet) => {
-    const card = document.createElement("div");
-    card.className = "card";
+function Init() {
+    const container = document.getElementById("container");
 
-    card.innerHTML = `
-        <img src="${pet.image}" alt="${pet.name}" />
-        <div class="card-content">
-          <h2>${pet.name} - ${pet.age} years old</h2>
-          <p>${pet.gender}, ${pet.type}</p>
-          <p>${pet.location}</p>
+    pets.forEach((pet) => {
+        const card = document.createElement("div");
+        card.className = "card";
 
-          <div class="contact-details">
+        card.innerHTML = `
+            <img src="${pet.image}" alt="${pet.name}" />
+            <div class="card-content">
+            <h2>${pet.name} - ${pet.age} years old</h2>
+            <p>${pet.gender}, ${pet.type}</p>
+            <p>${pet.location}</p>
+
+            <div class="contact-details">
             <p><span>Name:</span> ${pet.owner}</p>
             <p><span>Number:</span> Contact Now</p>
-          </div>
+            </div>
 
-          <a href="larger-card.html?${new URLSearchParams(pet)}" target="_blank" class="details-link">See more details ↗</a>
+            <a href="larger-card.html?${new URLSearchParams(pet)}" target="_blank" class="details-link">See more details ↗</a>
 
             <button class="cart-button" data-name=${pet.name}>Add To Cart</button>
 
             <!-- <button class="buy-button" data-name=${pet.name}>Buy Now</button> -->
             <a href="checkout.html?${new URLSearchParams(pet)}" target="_blank"><button class="buy-button">Buy Now</button></a>
-        </div>
-      `;
-    container.appendChild(card);
-});
-
-let buyButtons = document.getElementsByClassName("buy-button");
-
-[...buyButtons].forEach((element) => {
-    element.addEventListener("click", checkout);
-});
-
-function checkout() {
-    const cartPets = pets.filter((pet) => pet.cart);
-    console.log(cartPets);
+            </div>
+            `;
+        container.appendChild(card);
+    });
 }
 
-let cartButtons = document.getElementsByClassName("cart-button");
-
-// [...cartButtons].forEach((element) => {
-//     element.addEventListener("click", function () {
-//         cart(element.dataset.name);
-//     });
-// });
-//
-
-document.querySelectorAll(".cart-button").forEach((button) => {
-    button.addEventListener("click", function () {
-        cart(button.dataset.name, this);
+function AddListenerstoButtons() {
+    // buy-button
+    let buyButtons = document.getElementsByClassName("buy-button");
+    [...buyButtons].forEach((element) => {
+        element.addEventListener("click", BuyItem);
     });
-});
 
-function cart(name, btn) {
+    // add to cart button
+    let cartButtons = document.getElementsByClassName("cart-button");
+    [...cartButtons].forEach((element) => {
+        element.addEventListener("click", function () {
+            AddItemToCart(element.dataset.name, this);
+        });
+    });
+}
+
+// function to happend with buy-now is clicked
+function BuyItem() {
+    const cartProducts = products.filter((product) => product.cart);
+
+    // store the product in storage
+    localStorage.setItem("buyNow", JSON.stringify(cartProducts));
+
+    // redirect to checkout page
+    window.location.href = "checkout.html";
+}
+
+// function to add a pet to cart
+function AddItemToCart(name, btn) {
     let pet = pets.find((pet) => pet.name === name);
     pet.cart = !pet.cart;
 
@@ -97,4 +115,25 @@ function cart(name, btn) {
     }
 
     console.log(pet.cart);
+
+    // find all pets in cart
+    let petsInCart = pets.filter((pet) => pet.cart);
+    localStorage.setItem("petsInCart", JSON.stringify(petsInCart));
+}
+
+function UpdateCartButtons() {
+    const storedCart = JSON.parse(localStorage.getItem("petsInCart")) || [];
+
+    pets.forEach((pet) => {
+        pet.cart = storedCart.some((item) => item.name === pet.name);
+    });
+
+    let cartButtons = document.getElementsByClassName("cart-button");
+    [...cartButtons].forEach((element) => {
+        let pet = pets.find((p) => element.dataset.name === p.name);
+
+        if (pet.cart) {
+            element.innerHTML = "Remove from Cart";
+        }
+    });
 }
