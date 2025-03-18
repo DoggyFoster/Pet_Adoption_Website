@@ -14,10 +14,10 @@ const products = [
         price: 30,
     },
     {
-        name: "Dog Medicine",
-        image: "images/medicine.jpeg",
-        description: "Keep your pup healthy and happy with our trusted, vet-approved dog medicines for every need.",
-        price: 60,
+        name: "Dog biscut",
+        image: "images/biscut.webp",
+        description: "Treat your pup to crunchy, delicious, and nutritious dog biscuits they’ll love! the biscut our dog need",
+        price: 30,
     },
     {
         name: "Dog Bowl",
