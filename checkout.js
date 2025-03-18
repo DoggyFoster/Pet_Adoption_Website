@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
 
         // Append to container
-        const summaryContainer = document.getElementById("pet-summary");
+        const summaryContainer = document.getElementById("buy-summary");
         if (summaryContainer) {
             summaryContainer.appendChild(petCard);
         } else {
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         `;
 
-        const summaryContainer = document.getElementById("pet-summary");
+        const summaryContainer = document.getElementById("buy-summary");
         if (summaryContainer) {
             summaryContainer.appendChild(card);
         } else {

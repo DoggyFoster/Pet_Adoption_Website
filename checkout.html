@@ -8,8 +8,8 @@
         <style>
             body {
                 font-family: Arial, sans-serif;
-                display: flex;
-                justify-content: center;
+                /* display: flex; */
+                /* justify-content: center; */
                 min-height: 100vh;
                 padding: 20px;
                 margin: 0;
@@ -17,9 +17,25 @@
             }
 
             .main-container {
+                display: flex;
+                justify-content: space-evenly;
                 background: #fff;
                 padding: 20px;
                 min-width: 35%;
+            }
+
+            .form-container {
+                margin: 10px;
+                width: 100%;
+                background-color: #f9f9f9;
+                padding: 15px;
+            }
+
+            .summary-container {
+                margin: 10px;
+                width: 100%;
+                background-color: #f9f9f9;
+                padding: 15px;
             }
 
             h2 {
@@ -113,15 +129,16 @@
         <div class="main-container">
             <div class="summary-container" id="summary-container">
                 <h2>Checkout Summary</h2>
-                <div class="pet-summary" id="pet-summary"></div>
+                <div class="buy-summary" id="buy-summary"></div>
             </div>
-
             <div class="form-container">
                 <h2>Enter Your Details</h2>
                 <form action="#" method="POST">
                     <table>
                         <tr>
-                            <td><label for="name">Full Name:</label></td>
+                            <td>
+                                <label for="name">Full Name:</label>
+                            </td>
                             <td>
                                 <input
                                     type="text"
@@ -132,7 +149,9 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><label for="email">Email:</label></td>
+                            <td>
+                                <label for="email">Email:</label>
+                            </td>
                             <td>
                                 <input
                                     type="email"
@@ -143,7 +162,9 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><label for="phone">Phone Number:</label></td>
+                            <td>
+                                <label for="phone">Phone Number:</label>
+                            </td>
                             <td>
                                 <input
                                     type="tel"
@@ -178,7 +199,9 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><label for="state">State:</label></td>
+                            <td>
+                                <label for="state">State:</label>
+                            </td>
                             <td>
                                 <input
                                     type="text"
@@ -189,7 +212,9 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><label for="zip">Zip Code:</label></td>
+                            <td>
+                                <label for="zip">Zip Code:</label>
+                            </td>
                             <td>
                                 <input
                                     type="text"
