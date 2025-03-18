@@ -30,32 +30,29 @@
 
       }
       .navbar-perm {
-    position: absolute;
-    z-index: 20;
-    width: 70%;
-    height: 80px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-left: 10px;
-    padding-right: 10px;
-    background-color: black;
-    color: whitesmoke;
-    border: 1px solid darkgray;
-    backdrop-filter: blur(8px);
-    border-radius: 20px;
-    top: 12px;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: 3;
-  }
-    
-
-      
-      
+        position: absolute;
+        z-index: 20;
+        width: 70%;
+        height: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 10px;
+        padding-right: 10px;
+        background-color: black;
+        color: whitesmoke;
+        border: 1px solid darkgray;
+        backdrop-filter: blur(8px);
+        border-radius: 20px;
+        top: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 3;
+      }
       li {
         display: inline-block;
         margin: 10px;
+        transform: translateY(-15px) translateX(-80px);
       }
       a {
         color: whitesmoke;
@@ -87,7 +84,7 @@
       .kart
       {
 
-        margin-left: 50;
+        margin-left: 10;
         background-color: goldenrod;
         border: 2px solid black;
         border-radius: 5px;
@@ -279,7 +276,7 @@
             <div class="cardshadow-sm">
               <img src="images/conditioner.jpeg" alt="image" id="image" height="225" width="100%">
               <div class="card-body">
-                <p class="card-text">Keep your dog's coat soft, shiny, and healthy with our nourishing dog conditioner!</p>
+                <p class="card-text">Keep your dog's coat soft, shiny, and healthy with our nourishing dog conditioner.</p>
               
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
@@ -301,12 +298,9 @@
     <script>
       function add(image,price)
       {
-        window.location.href=`kart.html?image=${encodeURIComponent(image)}&price=${price}`;
+        window.open(`kart.html?image=${encodeURIComponent(image)}&price=${price}`, '_blank');
 
       }
     </script>
   </body>
 </html>
-<html>
-
-    
