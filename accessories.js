@@ -29,7 +29,7 @@ const products = [
     },
     {
         name: "Rope",
-        image: "images/rope.png",
+        image: "images/rope.jpg",
         description:
             "Keep your dog secure and comfortable with our strong, durable, and tangle-free dog rope.",
         cart: false,
@@ -83,7 +83,7 @@ function Init() {
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                         <button type="button" data-name=\"${product.name}\" class="btn btn-sm btn-outline-secondary cart-button">Add To Cart</button>
-                        <button type="button"  class="btn btn-sm btn-outline-primary buy-button">Buy Now</button>
+                        <button type="button" data-name=\"${product.name}\" class="btn btn-sm btn-outline-primary buy-button">Buy Now</button>
                     </div>
                 </div>
             </div>
@@ -96,26 +96,29 @@ function Init() {
 function AddListenerstoButtons() {
     // buy-button
     let buyButtons = document.getElementsByClassName("buy-button");
-    [...buyButtons].forEach((element) => {
-        element.addEventListener("click", BuyItem);
+    [...buyButtons].forEach((button) => {
+        button.addEventListener("click", function () {
+            BuyItem(button.dataset.name);
+        });
         console.log("1");
     });
 
     // add to cart button
     let cartButtons = document.getElementsByClassName("cart-button");
-    [...cartButtons].forEach((element) => {
-        element.addEventListener("click", function () {
-            AddItemToCart(element.dataset.name, this);
+    [...cartButtons].forEach((button) => {
+        button.addEventListener("click", function () {
+            AddItemToCart(button.dataset.name, this);
             console.log("2");
         });
     });
 }
 
-function BuyItem() {
-    const cartProducts = products.filter((product) => product.cart);
+function BuyItem(name) {
+    const product = products.find((prod) => prod.name === name);
+    const list = [product];
 
     // store the product in storage
-    localStorage.setItem("buyNow", JSON.stringify(cartProducts));
+    localStorage.setItem("buyNow", JSON.stringify(list));
 
     // redirect to checkout page
     window.location.href = "checkout.html";
@@ -125,7 +128,6 @@ function BuyItem() {
 function AddItemToCart(name, btn) {
     let product = products.find((product) => product.name === name);
     product.cart = !product.cart;
-    btn.dataset.cart = !btn.dataset.cart;
 
     if (product.cart) {
         btn.innerText = "Remove from Cart";
