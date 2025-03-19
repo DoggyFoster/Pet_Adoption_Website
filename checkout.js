@@ -1,39 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // const params = new URLSearchParams(window.location.search);
-    //
-    // // Extract pet details from URL parameters
-    // const name = params.get("name") || "Unknown Pet";
-    // const age = params.get("age") || "Unknown Age";
-    // const gender = params.get("gender") || "Unknown Gender";
-    // const type = params.get("type") || "Unknown Type";
-    // const petLocation = params.get("location") || "Unknown Location";
-    // const image = decodeURIComponent(params.get("image")) || "placeholder.jpg";
-    //
-    // // Create pet card
-    // const petCard = document.createElement("div");
-    // petCard.classList.add("pet-card");
-    //
-    // petCard.innerHTML = `
-    //     <div class="pet-image">
-    //         <img src="${image}" alt="${name}" />
-    //     </div>
-    //     <div class="pet-info">
-    //         <h2>${name}</h2>
-    //         <p><strong>Age:</strong> ${age} years</p>
-    //         <p><strong>Gender:</strong> ${gender}</p>
-    //         <p><strong>Type:</strong> ${type}</p>
-    //         <p><strong>Location:</strong> ${petLocation}</p>
-    //     </div>
-    // `;
-    //
-    // // Append to container
-    // const summaryContainer = document.getElementById("pet-summary");
-    // if (summaryContainer) {
-    //     summaryContainer.appendChild(petCard);
-    // } else {
-    //     console.error("Error: summary-container not found!");
-    // }
+    const buyNowCart = JSON.parse(localStorage.getItem("buyNow")) || [];
+    summaryContainer = document.getElementById("buy-summary");
 
+    if (Array.isArray(buyNowCart) && buyNowCart.length > 0) {
+        DisplayBuyNowItem();
+    } else {
+        console.log("cart items");
+        DisplayCartItems();
+    }
+});
+
+function DisplayCartItems() {
     const petsInCart = JSON.parse(localStorage.getItem("petsInCart")) || [];
     const accessoriesInCart =
         JSON.parse(localStorage.getItem("productsInCart")) || [];
@@ -78,11 +55,33 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         `;
 
-        const summaryContainer = document.getElementById("buy-summary");
         if (summaryContainer) {
             summaryContainer.appendChild(card);
         } else {
             console.error("Error: summary-container not found!");
         }
     });
-});
+}
+
+function DisplayBuyNowItem() {
+    const card = document.createElement("div");
+    card.className = "accessories-card";
+
+    const buyNowCart = JSON.parse(localStorage.getItem("buyNow")) || [];
+
+    buyNowCart.forEach((element) => {
+        card.innerHTML = `
+            <div class="pet-image">
+                <img src="${element.image}" />
+            </div>
+            <div class="pet-info">
+                <h2>${element.name}</h2>
+            </div>
+        `;
+    });
+
+    summaryContainer.appendChild(card);
+
+    // Clear buyNow storage after showing it on checkout page
+    localStorage.removeItem("buyNow");
+}
