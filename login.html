@@ -12,8 +12,7 @@
             height: 100vh;
             background-image: url(./images/loginimage.png);
             background-repeat: no-repeat;
-            background-size: 100% 100%; 
-            background-image:cover;
+            background-size: cover;
             background-position: center;
             font-family: Arial, sans-serif;
         }
@@ -71,8 +70,8 @@
     <div class="container">
         <div class="form-container">
             <h2>Welcome Back</h2>
-            <input type="email" placeholder="Email">
-            <input type="password" placeholder="Password">
+            <input id="mail" type="email" placeholder="Email">
+            <input id="password" type="password" placeholder="Password">
             <button onclick="execute()">Log In</button>
             <p>Don't have an account? <a href="./signin.html">Sign up</a></p>
         </div>
@@ -81,9 +80,37 @@
         </div>
     </div>
     <script>
-        function execute()
-        {
-            window.location.href="./home.html";
+        function execute() {
+            // Get input values
+            var mail = document.getElementById("mail").value;
+            var password = document.getElementById("password").value;
+
+            // Retrieve user data from localStorage
+            let data = localStorage.getItem("user");
+
+    
+            if (!data) {
+                window.alert("No user found. Please sign up first.");
+                return;
+            }
+
+        
+            data = JSON.parse(data);
+
+        
+            if (mail === "" || password === "") {
+                window.alert("Please fill in all the fields.");
+                return;
+            }
+
+            
+            if (data.mail !== mail || data.password !== password) {
+                window.alert("Incorrect email or password. Please try again.");
+                return;
+            }
+
+            
+            window.location.href = "./home.html";
         }
     </script>
 </body>
