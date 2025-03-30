@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Adoption - Sign Up</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url(./images/loginimage.png);
+            background-repeat: no-repeat;
+            background-size: 100% 100%; 
+            background-image:cover ;
+            background-position: center;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            width: 500px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+
+        }
+        .form-container {
+            padding: 40px;
+            flex: 1;
+        }
+        .form-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-bottom: 2px solid #ccc;
+            outline: none;
+        }
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #A98AC8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .form-container p {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .image-container {
+            background: #A98AC8;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .image-container img {
+            width: 150px;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h2>Get Started</h2>
+            <input type="email" placeholder="Email">
+            <input type="password" placeholder="Password">
+            <input type="password" placeholder="Repeat Password">
+            <button onclick="execute()">Sign Up</button>
+            <p>Already have an account? <a href="./login.html">Log in</a></p>
+        </div>
+        <div class="image-container">
+            <img src="./images/loginimage2.jpg" alt="Cute Dog">
+        </div>
+    </div>
+    <script>
+        function execute()
+        {
+            window.location.href="./login.html";
+        }
+    </script>
+</body>
+</html>
+
