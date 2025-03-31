@@ -10,6 +10,36 @@ const pets = [
         cart: false,
     },
     {
+        name: "Karman",
+        age: 7,
+        gender: "Male",
+        type: "Senior",
+        location: "Pune",
+        owner: "Nikita",
+        image: "images/karman.jpg",
+        cart: false,
+    },
+    {
+        name: "Karman",
+        age: 7,
+        gender: "Male",
+        type: "Senior",
+        location: "Pune",
+        owner: "Nikita",
+        image: "images/karman.jpg",
+        cart: false,
+    },
+    {
+        name: "Karman",
+        age: 7,
+        gender: "Male",
+        type: "Senior",
+        location: "Pune",
+        owner: "Nikita",
+        image: "images/karman.jpg",
+        cart: false,
+    },
+    {
         name: "Max",
         age: 3,
         gender: "Male",
@@ -86,7 +116,7 @@ function AddListenerstoButtons() {
     // add to cart button
     let cartButtons = document.getElementsByClassName("cart-button");
     [...cartButtons].forEach((element) => {
-        element.addEventListener("click", function () {
+        element.addEventListener("click", function() {
             AddItemToCart(element.dataset.name, this);
         });
     });
