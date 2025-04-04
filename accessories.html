@@ -1,44 +1,37 @@
-<html>
+<!doctype html>
+<html lang="en">
   <head>
-    <title>E-kart</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DoggyFoster</title>
     <style>
-      *{
-        margin: 0;
-        padding: 10px;
-      }
-      body{
-        background-color: whitesmoke;
-      }
-      h2
-      {
-        display: inline;
-      }
-      .container
-      {
+      /* Import fonts */
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
+
+      /* Base body styling */
+      body {
+        font-family: "Montserrat", sans-serif;
         display: flex;
-        justify-content:space-evenly;
-
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        min-height: 100vh;
+        background-color: #e8ebe0;
+        margin: 0;
+        padding: 0;
+        width: 100%;
       }
-      .btnbtn-smbtn-outline-secondary
-      {
-        border-radius: 5px;
-        border: 2px solid black;
-        text-align: center;
-        font-style: italic;
-        background-color:limegreen;
 
-      }
+      /* Fixed navigation bar */
       .navbar-perm {
-        position: absolute;
+        position: fixed;
         z-index: 20;
         width: 70%;
-        height: 40px;
+        height: 30px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding-left: 10px;
-        padding-right: 10px;
+        padding: 8px 15px; /* Increased padding for better spacing */
         background-color: black;
         color: whitesmoke;
         border: 1px solid darkgray;
@@ -47,261 +40,340 @@
         top: 12px;
         left: 50%;
         transform: translateX(-50%);
-        margin-top: 3;
       }
+
+      /* Navigation list items */
       li {
         display: inline-block;
         margin: 10px;
-        transform: translateY(-15px) translateX(-80px);
       }
+
       a {
         color: whitesmoke;
         text-decoration: none;
       }
-      .navbar-links img{
-          height: 20px;
-          width:20px;
-          background-size: contain;
-          vertical-align: middle;
-          display: flex;
+
+      .navbar-perm img {
+        height: 20px;
+        width: 20px;
+        background-size: contain;
+        vertical-align: middle;
       }
-      .card-body{
-        background-color: blueviolet;
-        color: whitesmoke;
-        border-top: 5px solid black;
+
+      /* Main heading */
+      .bigasstext {
+        font-size: 60px;
+        text-align: center;
+        width: 100%;
+        margin-top: 40px; /* Reduced from 80px */
+        padding-top: 10px; /* Reduced from 20px */
+        display: block;
+        position: relative;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        text-shadow: 2px 2px 2px white;
       }
-      .cardshadow-sm
-      {
-        border: 2px solid black;
- 
-      }
-      .btn-group
-      {
+      /* Main content container */
+      main {
+        width: 100%;
         display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 20px; /* Reduced from 40px */
+      }
+      /* Product grid container */
+      .container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px; /* Increased from 30px */
+        padding: 20px;
+        width: 90%;
+        max-width: 1200px;
+        margin: 30px auto 50px;
+      }
+      /* Responsive grid adjustments */
+      @media (max-width: 1100px) {
+        .container {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media (max-width: 800px) {
+        .container {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 500px) {
+        .container {
+          grid-template-columns: 1fr;
+        }
+
+        .bigasstext {
+          font-size: 40px; /* Smaller text for mobile */
+        }
+      }
+
+      /* Card styling */
+      .card {
+        background-color: #ffffff;
+        border-radius: 20px;
+        padding: 20px;
+        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+        text-align: center;
+        border: none;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+        display: flex;
+        flex-direction: column;
         justify-content: space-between;
 
+        /* Fix for overlapping */
+        margin-bottom: 20px; /* Increased from 10px */
+        height: auto; /* Changed from height: 100% */
+        min-height: 400px; /* Increased from 380px */
       }
-      .kart
-      {
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.2);
+      }
 
-        margin-left: 10;
-        background-color: goldenrod;
-        border: 2px solid black;
-        border-radius: 5px;
+      .card img {
+        width: 100%;
+        height: 180px;
+        border-radius: 12px;
+        object-fit: contain;
+        margin-bottom: 15px;
       }
-    
-    
+
+      .card-content {
+        padding: 8px 0;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .card h2 {
+        margin: 0 0 12px; /* Increased bottom margin */
+        font-size: 22px;
+        color: black;
+        line-height: 1.3;
+      }
+
+      .card p {
+        margin: 0 0 12px; /* Added margin for description */
+      }
+
+      .price {
+        font-size: 18px;
+        font-weight: bold;
+        color: black;
+        margin: 12px 0; /* Increased vertical margins */
+      }
+
+      /* Button container */
+      .button-container {
+        display: flex;
+        gap: 10px;
+        margin-top: 15px; /* Increased from auto to provide consistent spacing */
+      }
+
+      .buy-button,
+      .cart-button {
+        flex: 1;
+        padding: 10px 15px;
+        color: white;
+        border: none;
+        border-radius: 15px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        text-align: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .buy-button {
+        background-color: #d391fa;
+      }
+
+      .cart-button {
+        background-color: blueviolet;
+      }
+
+      .buy-button:hover,
+      .cart-button:hover {
+        background-color: darkslateblue;
+        transform: scale(1.05);
+      }
+
+      /* Footer styling */
+      footer {
+        width: 100%;
+        text-align: center;
+        padding: 20px 0;
+        background-color: #333;
+        color: white;
+        margin-top: 20px;
+      }
     </style>
   </head>
   <body>
-    <div class="navbar-perm">
-      <div class="navbar-links">
-        <nav>
-          <ul style="list-style: none">
-            <li style="display: inline-block; margin-right: 10px">
-              <a href="home.html" style="color: whitesmoke">Home</a>
-            </li>
-            <li style="display: inline-block; margin-right: 10px">
-              <a href="adopt.html" style="color: whitesmoke">Adopt</a>
-            </li>
-            <li style="display: inline-block; margin-right: 10px">
-              <a href="care_guide.html" style="color: whitesmoke">Care Guide</a>
-            </li>
-            <li style="display: inline-block; margin-right: 10px">
-              <a href="accessories.html" style="color: whitesmoke"
-                >Accessories</a
-              >
-            </li>
-            <li style="display: inline-block; margin-right: 10px">
-              <a href="" style="color: whitesmoke"
-                ><img
-                  src="images/shooping-cart-img.png"
-                  alt="shopping-cart"
-                /></a
-              >
-            </li>
-          </ul>
-        </nav>
-      </div>
+    <!-- Original Navbar Structure -->
+    <header class="navbar-perm">
+      <nav>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="adopt.html">Adopt</a></li>
+          <li><a href="care_guide.html">Care Guide</a></li>
+          <li><a href="accessories.html">Accessories</a></li>
+          <li>
+            <a href="cart.html">
+              <img src="images/shooping-cart-img.png" alt="shopping-cart" />
+            </a>
+          </li>
+        </ul>
+      </nav>
       <div class="navbar-logo">
-        <h3 style="margin: 0; transform: translateY(2px);">DoggyFoster</h3>
+        <h3>DoggyFoster</h3>
       </div>
-    </div>
-    <br>
-    <br>
-    <br>
+    </header>
 
-    <div class="album py-5 bg-body-tertiary">
-      <div class="container">
-  
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-          <div class="col">
-            <div class="cardshadow-sm">
-              <img src="images/coller.png" alt="image" id="image" height="225" width="100%">
-              <div class="card-body">
-                <p class="card-text">Keep your dog safe, stylish, and comfortable with our premium-quality collars.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btnbtn-smbtn-outline-secondary">Buy Now</button>
-                    <button class="kart" onclick="add('images/coller.png',20)">add to Cart</button>
-      
-                  
-                  </div>
-              
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="cardshadow-sm">
-              <img src="images/food.png" alt="image" id="image" height="225" width="100%">
-               <div class="card-body">
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. </p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btnbtn-smbtn-outline-secondary">Buy Now</button>
-                    <button class="kart" onclick="add('images/food.png',50)" >add to Cart</button>
-      
-                  </div>
-          
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="cardshadow-sm">
-              <img src="images/bowl.png" alt="image" id="image" height="225" width="100%">
-              <div class="card-body">
-                <p class="card-text">Give your furry friend the nutrition they deserve with our wholesome, delicious, and balanced dog food.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btnbtn-smbtn-outline-secondary">Buy Now</button>
-                    <button class="kart" onclick="add('images/bowl.png',80)">add to Cart</button>
-      
-        
-                  </div>
-        
-                </div>
-              </div>
-            </div>
-          </div>
-  
-          <div class="col">
-            <div class="cardshadow-sm">
-              <img src="images/medicine.jpeg" alt="image" id="image" height="225" width="100%">
-              <div class="card-body">
-                <p class="card-text">Keep your pup healthy and happy with our trusted, vet-approved dog medicines for every need.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btnbtn-smbtn-outline-secondary">Buy Now</button>
-                    <button class="kart" onclick="add('images/medicine.jpeg',40)">add to Cart</button>
-      
-          
-                  </div>
-          
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="cardshadow-sm">
-              <img src="images/rope.jpg" alt="image" id="image" height="225" width="100%">
-              <div class="card-body">
-                <p class="card-text">Keep your dog secure and comfortable with our strong, durable, and tangle-free dog rope.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btnbtn-smbtn-outline-secondary">Buy Now</button>
-                    <button class="kart" onclick="add('images/rope.jpg',120)">add to Cart</button>
-      
-        
-                  </div>
-        
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="cardshadow-sm">
-              <img src="images/mask.jpg" alt="image" id="image" height="225" width="100%">
-              <div class="card-body">
-                <p class="card-text">mask Stay protected in style with our comfortable, breathable, and high-quality masks</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btnbtn-smbtn-outline-secondary">Buy Now</button>
-                    <button class="kart" onclick="add('images/mask.jpg',20)">add to Cart</button>
-      
-        
-                  </div>
-          
-                </div>
-              </div>
-            </div>
-          </div>
-  
-          <div class="col">
-            <div class="cardshadow-sm">
-              <img src="images/house.png" alt="image" id="image" height="225" width="100%">
-              <div class="card-body">
-                <p class="card-text">Give your furry friend a cozy and secure retreat with our durable, weatherproof dog houses.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btnbtn-smbtn-outline-secondary">Buy Now</button>
-                    <button class="kart" onclick="add('images/house.png',300)"    >add to Cart</button>
-      
-            
-                  </div>
-              
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="cardshadow-sm">
-              <img src="images/biscut.webp" alt="image" id="image" height="225" width="100%">
-              <div class="card-body">
-                <p class="card-text">Treat your pup to crunchy, delicious, and nutritious dog biscuits they’ll love!</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btnbtn-smbtn-outline-secondary">Buy Now</button>
-                    <button class="kart" onclick="add('images/biscut.webp',10)">add to Cart</button>
-      
-        
-                  </div>
-  
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="cardshadow-sm">
-              <img src="images/conditioner.jpeg" alt="image" id="image" height="225" width="100%">
-              <div class="card-body">
-                <p class="card-text">Keep your dog's coat soft, shiny, and healthy with our nourishing dog conditioner.</p>
-              
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btnbtn-smbtn-outline-secondary">Buy Now</button> 
-                    <button class="kart" onclick="add('images/conditioner.jpeg',50)">add to Cart</button>
-      
-                  </div>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <main>
+      <div class="bigasstext">Our Products</div>
+      <div class="container" id="products-container">
+        <!-- Products will be dynamically generated here -->
       </div>
-    </div>
-    
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>  
+    </main>
+    <footer>
+      <p>&copy; 2025 DoggyFoster. All rights reserved.</p>
+    </footer>
     <script>
-      function add(image,price)
-      {
-        window.open(`kart.html?image=${encodeURIComponent(image)}&price=${price}`, '_blank');
+      // Product data
+      const products = [
+        {
+          id: "collar",
+          name: "Dog Collar",
+          price: 20,
+          image: "/api/placeholder/300/200",
+          description:
+            "Keep your dog safe, stylish, and comfortable with our premium-quality collars.",
+        },
+        {
+          id: "food",
+          name: "Dog Food",
+          price: 50,
+          image: "/api/placeholder/300/200",
+          description:
+            "Give your furry friend the nutrition they deserve with our wholesome, delicious, and balanced dog food.",
+        },
+        {
+          id: "bowl",
+          name: "Dog Bowl",
+          price: 80,
+          image: "/api/placeholder/300/200",
+          description:
+            "Stylish and durable feeding bowls that make mealtime more enjoyable for your canine companion.",
+        },
+        {
+          id: "medicine",
+          name: "Dog Medicine",
+          price: 40,
+          image: "/api/placeholder/300/200",
+          description:
+            "Keep your pup healthy and happy with our trusted, vet-approved dog medicines for every need.",
+        },
+        {
+          id: "rope",
+          name: "Dog Rope",
+          price: 120,
+          image: "/api/placeholder/300/200",
+          description:
+            "Keep your dog secure and comfortable with our strong, durable, and tangle-free dog rope.",
+        },
+        {
+          id: "mask",
+          name: "Dog Mask",
+          price: 20,
+          image: "/api/placeholder/300/200",
+          description:
+            "Protective and comfortable masks designed specially for your canine companions.",
+        },
+        {
+          id: "house",
+          name: "Dog House",
+          price: 300,
+          image: "/api/placeholder/300/200",
+          description:
+            "Give your furry friend a cozy and secure retreat with our durable, weatherproof dog houses.",
+        },
+        {
+          id: "biscuit",
+          name: "Dog Biscuits",
+          price: 10,
+          image: "/api/placeholder/300/200",
+          description:
+            "Treat your pup to crunchy, delicious, and nutritious dog biscuits they'll love!",
+        },
+        {
+          id: "conditioner",
+          name: "Dog Conditioner",
+          price: 50,
+          image: "/api/placeholder/300/200",
+          description:
+            "Keep your dog's coat soft, shiny, and healthy with our nourishing dog conditioner.",
+        },
+      ];
 
+      function generateProductCards() {
+        const productsContainer = document.getElementById("products-container");
+
+        products.forEach((product) => {
+          const card = document.createElement("div");
+          card.className = "card";
+
+          card.innerHTML = `
+      <img src="${product.image}" alt="${product.name}">
+      <div class="card-content">
+        <h2>${product.name}</h2>
+        <p>${product.description}</p>
+        <div class="price">$${product.price.toFixed(2)}</div>
+      </div>
+      <div class="button-container">
+        <button class="buy-button" onclick="buyNow('${product.id}', ${product.price})">Buy Now</button>
+        <button class="cart-button" onclick="addToCart('${product.id}', ${product.price})">Add to Cart</button>
+      </div>
+    `;
+
+          productsContainer.appendChild(card);
+        });
       }
+
+      // Cart functions
+      function addToCart(productId, price) {
+        // Add to cart functionality
+        console.log(`Added product ${productId} to cart at $${price}`);
+        window.open(
+          `cart.html?product=${encodeURIComponent(productId)}&price=${price}`,
+          "_blank",
+        );
+      }
+
+      function buyNow(productId, price) {
+        // Buy now functionality
+        console.log(`Buying product ${productId} at $${price}`);
+        window.open(
+          `checkout.html?product=${encodeURIComponent(productId)}&price=${price}`,
+          "_blank",
+        );
+      }
+
+      // Generate products when page loads
+      document.addEventListener("DOMContentLoaded", generateProductCards);
     </script>
   </body>
 </html>
-
