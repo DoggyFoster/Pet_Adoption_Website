@@ -31,9 +31,10 @@
         display: flex;
         justify-content: space-evenly;
         background: blueviolet;
-        padding: 20px;
+        padding: 5px;
         min-width: 35%;
         border-radius: 25px;
+        transform: translateY(-8px);
       }
 
       .form-container {
@@ -153,10 +154,87 @@
         margin: 5px 0;
         color: #555;
       }
+      .navbar-perm {
+        position: relative;
+        width: 70%;
+        height: 30px;
+        display: flex;
+        transform: translateY(-12px);
+        justify-content: space-between;
+        padding: 0 20px;
+        background-color: black;
+        color: whitesmoke;
+        border: 1px solid darkgray;
+        backdrop-filter: blur(8px);
+        border-radius: 20px;
+        margin: 0 auto 20px auto;
+      }
+      .navbar-links {
+        align-self: center;
+      }
+      .navbar-links ul {
+        padding: 0;
+        margin: 0;
+      }
+      .navbar-logo {
+        align-self: right;
+      }
+      .navbar-links img {
+        height: 20px;
+        width: 20px;
+        background-size: contain;
+        vertical-align: middle;
+      }
+      li {
+        display: inline-block;
+      }
+      a {
+        color: whitesmoke;
+        text-decoration: none;
+      }
     </style>
   </head>
 
   <body>
+    <div class="navbar-perm">
+      <div class="navbar-links">
+        <nav>
+          <ul style="list-style: none">
+            <li style="display: inline-block; margin-right: 10px">
+              <a href="home.html" style="color: whitesmoke">Home</a>
+            </li>
+            <li style="display: inline-block; margin-right: 10px">
+              <a href="adopt.html" style="color: whitesmoke">Adopt</a>
+            </li>
+            <li style="display: inline-block; margin-right: 10px">
+              <a href="care_guide.html" style="color: whitesmoke">Care Guide</a>
+            </li>
+            <li style="display: inline-block; margin-right: 10px">
+              <a href="accessories.html" style="color: whitesmoke"
+                >Accessories</a
+              >
+            </li>
+            <li style="display: inline-block; margin-right: 10px">
+              <a
+                href="cart.html"
+                style="color: whitesmoke; display: flex; align-items: center"
+              >
+                <span style="display: inline-block">(</span>
+                <img
+                  src="images/shooping-cart-img.png"
+                  alt="shopping-cart"
+                  style="margin: 0"
+                />
+                <span style="display: inline-block">)</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="navbar-logo">
+        <h3 style="margin: 0; transform: translateY(2px)">DoggyFoster</h3>
+      </div>
+    </div>
     <div class="main-container">
       <div class="summary-container" id="summary-container">
         <h2>Checkout Summary</h2>
