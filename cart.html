@@ -1,264 +1,225 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Buy Page</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buy Page</title>
 
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                /* display: flex; */
-                /* justify-content: center; */
-                min-height: 100vh;
-                padding: 20px;
-                margin: 0;
-                background-color: #f9f9f9;
-            }
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        /* display: flex; */
+        /* justify-content: center; */
+        min-height: 100vh;
+        padding: 20px;
+        margin: 0;
+        background-color: #f9f9f9;
+      }
 
-            .main-container {
-                display: flex;
-                justify-content: space-evenly;
-                background: #fff;
-                padding: 20px;
-                min-width: 35%;
-            }
+      .main-container {
+        display: flex;
+        justify-content: space-evenly;
+        background: #fff;
+        padding: 20px;
+        min-width: 35%;
+      }
 
-            .form-container {
-                margin: 10px;
-                width: 100%;
-                background-color: #f9f9f9;
-                padding: 15px;
-            }
+      .form-container {
+        margin: 10px;
+        width: 100%;
+        background-color: #f9f9f9;
+        padding: 15px;
+      }
 
-            .summary-container {
-                margin: 10px;
-                width: 100%;
-                background-color: #f9f9f9;
-                padding: 15px;
-            }
+      .summary-container {
+        margin: 10px;
+        width: 100%;
+        background-color: #f9f9f9;
+        padding: 15px;
+      }
 
-            h2 {
-                text-align: center;
-                margin-bottom: 20px;
-            }
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
 
-            table {
-                width: 100%;
-                border-collapse: collapse;
-            }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
 
-            td {
-                padding: 10px;
-            }
+      td {
+        padding: 10px;
+      }
 
-            input,
-            select {
-                width: 100%;
-                padding: 8px;
-                margin-top: 4px;
-                border: 1px solid #ccc;
-                border-radius: 6px;
-            }
+      input,
+      select {
+        width: 100%;
+        padding: 8px;
+        margin-top: 4px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+      }
 
-            .submit-btn {
-                width: 100%;
-                padding: 12px;
-                background-color: #28a745;
-                color: white;
-                border: none;
-                border-radius: 6px;
-                font-size: 16px;
-                cursor: pointer;
-                margin-top: 10px;
-            }
+      .submit-btn {
+        width: 100%;
+        padding: 12px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
 
-            .submit-btn:hover {
-                background-color: #218838;
-            }
+      .submit-btn:hover {
+        background-color: #218838;
+      }
 
-            img {
-                float: left;
-                height: 200px;
-                border-radius: 8px 8px 0 0;
-            }
+      img {
+        float: left;
+        height: 200px;
+        border-radius: 8px 8px 0 0;
+      }
 
-            .summary-container {
-                display: flow-root;
-                margin-bottom: 30px;
-            }
+      .summary-container {
+        display: flow-root;
+        margin-bottom: 30px;
+      }
 
-            /* Style for the pet card */
-            .pet-card,
-            .accessories-card {
-                display: flex;
-                justify-content: space-evenly;
-                align-items: center;
-                gap: 20px;
-                padding: 20px;
-                border-radius: 10px;
-                background: #f9f9f9;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                max-width: 600px;
-                margin: auto;
-                margin-bottom: 10px;
-            }
+      /* Style for the pet card */
+      .pet-card,
+      .accessories-card {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+        border-radius: 10px;
+        background: #f9f9f9;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        margin: auto;
+        margin-bottom: 10px;
+      }
 
-            /* Image section */
-            .pet-image img {
-                width: 150px;
-                height: 150px;
-                object-fit: cover;
-                border-radius: 8px;
-            }
+      /* Image section */
+      .pet-image img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
 
-            /* Pet details */
-            .pet-info h2 {
-                margin: 0;
-                color: #333;
-            }
+      /* Pet details */
+      .pet-info h2 {
+        margin: 0;
+        color: #333;
+      }
 
-            .pet-info p {
-                margin: 5px 0;
-                color: #555;
-            }
-        </style>
-    </head>
+      .pet-info p {
+        margin: 5px 0;
+        color: #555;
+      }
+    </style>
+  </head>
 
-    <body>
-        <div class="main-container">
-            <div class="summary-container" id="summary-container">
-                <h2>Checkout Summary</h2>
-                <div class="buy-summary" id="buy-summary"></div>
-            </div>
-            <div class="form-container">
-                <h2>Enter Your Details</h2>
-                <form action="#" method="POST">
-                    <table>
-                        <tr>
-                            <td>
-                                <label for="name">Full Name:</label>
-                            </td>
-                            <td>
-                                <input
-                                    type="text"
-                                    id="name"
-                                    name="name"
-                                    required
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="email">Email:</label>
-                            </td>
-                            <td>
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    required
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="phone">Phone Number:</label>
-                            </td>
-                            <td>
-                                <input
-                                    type="tel"
-                                    id="phone"
-                                    name="phone"
-                                    required
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="address">Shipping Address:</label>
-                            </td>
-                            <td>
-                                <input
-                                    type="text"
-                                    id="address"
-                                    name="address"
-                                    required
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><label for="city">City:</label></td>
-                            <td>
-                                <input
-                                    type="text"
-                                    id="city"
-                                    name="city"
-                                    required
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="state">State:</label>
-                            </td>
-                            <td>
-                                <input
-                                    type="text"
-                                    id="state"
-                                    name="state"
-                                    required
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="zip">Zip Code:</label>
-                            </td>
-                            <td>
-                                <input
-                                    type="text"
-                                    id="zip"
-                                    name="zip"
-                                    required
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="payment">Payment Method:</label>
-                            </td>
-                            <td>
-                                <select id="payment" name="payment">
-                                    <option value="credit">Credit Card</option>
-                                    <option value="debit">Debit Card</option>
-                                    <option value="paypal">PayPal</option>
-                                    <option value="cod">
-                                        Cash on Delivery
-                                    </option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="notes">Additional Notes:</label>
-                            </td>
-                            <td>
-                                <textarea
-                                    id="notes"
-                                    name="notes"
-                                    rows="3"
-                                    style="width: 100%"
-                                ></textarea>
-                            </td>
-                        </tr>
-                    </table>
-                    <button type="submit" class="submit-btn">
-                        Submit Order
-                    </button>
-                </form>
-            </div>
-        </div>
-        <script src="checkout.js"></script>
-    </body>
+  <body>
+    <div class="main-container">
+      <div class="summary-container" id="summary-container">
+        <h2>Checkout Summary</h2>
+        <div class="buy-summary" id="buy-summary"></div>
+      </div>
+      <div class="form-container">
+        <h2>Enter Your Details</h2>
+        <form action="#" method="POST">
+          <table>
+            <tr>
+              <td>
+                <label for="name">Full Name:</label>
+              </td>
+              <td>
+                <input type="text" id="name" name="name" required />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="email">Email:</label>
+              </td>
+              <td>
+                <input type="email" id="email" name="email" required />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="phone">Phone Number:</label>
+              </td>
+              <td>
+                <input type="tel" id="phone" name="phone" required />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="address">Shipping Address:</label>
+              </td>
+              <td>
+                <input type="text" id="address" name="address" required />
+              </td>
+            </tr>
+            <tr>
+              <td><label for="city">City:</label></td>
+              <td>
+                <input type="text" id="city" name="city" required />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="state">State:</label>
+              </td>
+              <td>
+                <input type="text" id="state" name="state" required />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="zip">Zip Code:</label>
+              </td>
+              <td>
+                <input type="text" id="zip" name="zip" required />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="payment">Payment Method:</label>
+              </td>
+              <td>
+                <select id="payment" name="payment">
+                  <option value="credit">Credit Card</option>
+                  <option value="debit">Debit Card</option>
+                  <option value="paypal">PayPal</option>
+                  <option value="cod">Cash on Delivery</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="notes">Additional Notes:</label>
+              </td>
+              <td>
+                <textarea
+                  id="notes"
+                  name="notes"
+                  rows="3"
+                  style="width: 100%"
+                ></textarea>
+              </td>
+            </tr>
+          </table>
+          <button type="submit" class="submit-btn">Submit Order</button>
+        </form>
+      </div>
+    </div>
+    <script src="cart.js"></script>
+  </body>
 </html>
