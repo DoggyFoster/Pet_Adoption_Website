@@ -4,10 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Buy Page</title>
-
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="favicons/favicon-32x32.png" />
     <style>
+      * {
+        font-family: "Montserrat", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
       body {
-        font-family: Arial, sans-serif;
+        /*font-family: Arial, sans-serif;
         /* display: flex; */
         /* justify-content: center; */
         min-height: 100vh;
@@ -19,9 +30,10 @@
       .main-container {
         display: flex;
         justify-content: space-evenly;
-        background: #fff;
+        background: blueviolet;
         padding: 20px;
         min-width: 35%;
+        border-radius: 25px;
       }
 
       .form-container {
@@ -29,6 +41,7 @@
         width: 100%;
         background-color: #f9f9f9;
         padding: 15px;
+        border-radius: 25px;
       }
 
       .summary-container {
@@ -36,6 +49,7 @@
         width: 100%;
         background-color: #f9f9f9;
         padding: 15px;
+        border-radius: 25px;
       }
 
       h2 {
@@ -64,17 +78,17 @@
       .submit-btn {
         width: 100%;
         padding: 12px;
-        background-color: #28a745;
+        background-color: #9ec6f3;
         color: white;
         border: none;
-        border-radius: 6px;
+        border-radius: 20px;
         font-size: 16px;
         cursor: pointer;
         margin-top: 10px;
       }
 
       .submit-btn:hover {
-        background-color: #218838;
+        background-color: #9fb3df;
       }
 
       img {
@@ -88,6 +102,11 @@
         margin-bottom: 30px;
       }
 
+      button {
+        border-radius: 25px;
+        padding: 5px;
+      }
+
       /* Style for the pet card */
       .pet-card,
       .accessories-card {
@@ -96,12 +115,24 @@
         align-items: center;
         gap: 20px;
         padding: 20px;
-        border-radius: 10px;
+        border-radius: 25px;
         background: #f9f9f9;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         max-width: 600px;
         margin: auto;
         margin-bottom: 10px;
+        transition:
+          transform 0.3s ease,
+          border-color 0.3s ease,
+          box-shadow 0.3s ease;
+        scroll-snap-align: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .pet-card:hover,
+      .accessories-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 36px darkgrey;
+        border-color: blueviolet;
       }
 
       /* Image section */
