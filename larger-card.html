@@ -1,74 +1,102 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Pet Details</title>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pet Details</title>
 
-        <style>
-            .large-card {
-                font-family: Arial, sans-serif;
-                width: 90%;
-                max-width: 600px;
-                margin: 50px auto;
-                padding: 20px;
-                background: #fff;
-                border-radius: 12px;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-                text-align: center;
-            }
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="favicons/favicon-32x32.png" />
+    <style>
+      * {
+        font-family: "Montserrat", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-            .large-card img {
-                width: 100%;
-                height: 300px;
-                object-fit: contain;
-                border-radius: 8px;
-            }
+      body {
+        background-color: whitesmoke;
+      }
 
-            h2,
-            p {
-                margin: 8px 0;
-            }
+      .large-card {
+        font-family: Arial, sans-serif;
+        width: 90%;
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 25px;
+        border: 2px solid transparent;
+        border-color: #6f61c0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        transition:
+          transform 0.3s ease,
+          border-color 0.3s ease,
+          box-shadow 0.3s ease;
+        scroll-snap-align: center;
+      }
 
-            img {
-                float: left;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="large-card">
-            <img id="pet-image" alt="karman.jpg" />
-            <h2 id="pet-name"></h2>
-            <p id="pet-age"></p>
-            <p id="pet-gender"></p>
-            <p id="pet-type"></p>
-            <p id="pet-location"></p>
-            <p id="pet-owner"></p>
-        </div>
+      .large-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 36px darkgrey;
+        border-color: blueviolet;
+      }
 
-        <script>
-            const params = new URLSearchParams(window.location.search);
+      .large-card img {
+        width: 100%;
+        height: 300px;
+        object-fit: contain;
+        border-radius: 8px;
+        border-radius: 25px;
+      }
 
-            const name = params.get("name") || "Unknown";
-            const age = params.get("age") || "?";
-            const gender = params.get("gender") || "Unknown";
-            const type = params.get("type") || "Unknown";
-            const petLocation = params.get("location") || "Unknown";
-            const owner = params.get("owner") || "Unknown";
-            const image = params.get("image") || "karman.jpg";
+      h2,
+      p {
+        margin: 8px 0;
+      }
 
-            document.getElementById("pet-image").src = image;
-            document.getElementById("pet-image").alt = name;
+      img {
+        float: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="large-card">
+      <img id="pet-image" alt="karman.jpg" />
+      <h2 id="pet-name"></h2>
+      <p id="pet-age"></p>
+      <p id="pet-gender"></p>
+      <p id="pet-type"></p>
+      <p id="pet-location"></p>
+      <p id="pet-owner"></p>
+    </div>
 
-            document.getElementById("pet-name").textContent =
-                `${name} - ${age} years old`;
-            document.getElementById("pet-age").textContent = `Age: ${age}`;
-            document.getElementById("pet-gender").textContent =
-                `Gender: ${gender}`;
-            document.getElementById("pet-type").textContent = `Type: ${type}`;
-            document.getElementById("pet-location").textContent =
-                `Location: ${petLocation}`;
-            document.getElementById("pet-owner").textContent =
-                `Owner: ${owner}`;
-        </script>
-    </body>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+
+      const name = params.get("name") || "Unknown";
+      const age = params.get("age") || "?";
+      const gender = params.get("gender") || "Unknown";
+      const type = params.get("type") || "Unknown";
+      const petLocation = params.get("location") || "Unknown";
+      const owner = params.get("owner") || "Unknown";
+      const image = params.get("image") || "karman.jpg";
+
+      document.getElementById("pet-image").src = image;
+      document.getElementById("pet-image").alt = name;
+
+      document.getElementById("pet-name").textContent =
+        `${name} - ${age} years old`;
+      document.getElementById("pet-age").textContent = `Age: ${age}`;
+      document.getElementById("pet-gender").textContent = `Gender: ${gender}`;
+      document.getElementById("pet-type").textContent = `Type: ${type}`;
+      document.getElementById("pet-location").textContent =
+        `Location: ${petLocation}`;
+      document.getElementById("pet-owner").textContent = `Owner: ${owner}`;
+    </script>
+  </body>
 </html>
