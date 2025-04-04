@@ -8,7 +8,7 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-        <link rel="icon" type="image/png" href="favicons/favicon-32x32.png"/>
+    <link rel="icon" type="image/png" href="favicons/favicon-32x32.png" />
     <style>
       * {
         font-family: "Montserrat", sans-serif;
@@ -244,11 +244,11 @@
         color: whitesmoke;
         text-decoration: none;
       }
-      .navbar-links img{
-          height: 20px;
-          width:20px;
-          background-size: contain;
-          vertical-align: middle;
+      .navbar-links img {
+        height: 20px;
+        width: 20px;
+        background-size: contain;
+        vertical-align: middle;
       }
     </style>
   </head>
@@ -271,9 +271,14 @@
                 >Accessories</a
               >
             </li>
-             <li style="display: inline-block; margin-right: 10px">
-              <a href="checkout.html" style="color: whitesmoke">(<img src="images/shooping-cart-img.png" alt="shopping-cart">)</a>
-            </li>           
+            <li style="display: inline-block; margin-right: 10px">
+              <a href="checkout.html" style="color: whitesmoke"
+                >(<img
+                  src="images/shooping-cart-img.png"
+                  alt="shopping-cart"
+                />)</a
+              >
+            </li>
           </ul>
         </nav>
       </div>
@@ -305,7 +310,12 @@
             <p>Labrador Retriever</p>
             <p>Male, 3 yrs 10 mos</p>
             <p>India Gate, New Delhi</p>
-            <a href="#" class="adopt-button">Meet Rico</a>
+            <a
+              href="adopt.html"
+              class="adopt-button"
+              onclick="handleAdoptClick(event)"
+              >Meet Rico</a
+            >
           </div>
           <div class="card">
             <img
@@ -374,7 +384,17 @@
         const carousel = document.getElementById("carousel");
         carousel.scrollBy({ left: direction * 270, behavior: "smooth" });
       }
+      function highlightPet(name) {
+        console.log("hi");
+        localStorage.setItem("highlightPet", name);
+      }
+      function handleAdoptClick(event) {
+        event.preventDefault();
+        highlightPet("Rico"); // pass the pet name directly
+        window.location.href = "adopt.html"; // navigate after setting
+      }
     </script>
+
     <section class="main-bg bg2">
       <h1>Choose a stray and give him a warm home</h1>
     </section>
@@ -384,7 +404,7 @@
         Welcome to DoggyFoster! Our mission is to connect loving families with
         pets in need of adoption. We believe every pet deserves a chance to be
         loved and cared for.
-        </p>
+      </p>
       <p>
         Our passionate team works tirelessly to ensure each pet is matched with
         the perfect family. We provide resources and support to help new pet
@@ -395,7 +415,6 @@
         can make a difference in the lives of these wonderful animals.
       </p>
     </section>
-    </section>
+    <!-- </section> -->
   </body>
 </html>
-

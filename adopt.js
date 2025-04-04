@@ -1,3 +1,26 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const petToHighlight = localStorage.getItem("highlightPet");
+
+  if (petToHighlight) {
+    const cards = document.querySelectorAll(".card");
+
+    for (const card of cards) {
+      const nameTag = card.querySelector("h2");
+      if (
+        nameTag &&
+        nameTag.textContent.trim().toUpperCase() ===
+          petToHighlight.toUpperCase()
+      ) {
+        card.classList.add("highlighted");
+        card.scrollIntoView({ behavior: "smooth", block: "center" });
+        break;
+      }
+    }
+
+    localStorage.removeItem("highlightPet");
+  }
+});
+
 const pets = [
   {
     name: "Karman",
@@ -25,6 +48,7 @@ const pets = [
     gender: "Male",
     type: "Adult",
     location: "Mumbai",
+    owner: "Mithuraa",
     image: "images/cat.jpg",
     cart: false,
   },
@@ -34,6 +58,7 @@ const pets = [
     gender: "Male",
     type: "Adult",
     location: "India Gate, New Delhi",
+    owner: "Mithuraa",
     image:
       "https://cdn.pixabay.com/photo/2023/08/18/15/02/dog-8198719_1280.jpg",
     cart: false,
@@ -44,6 +69,7 @@ const pets = [
     gender: "Male",
     type: "Young",
     location: "Panjim, Goa",
+    owner: "Mithuraa",
     image:
       "https://cdn.pixabay.com/photo/2016/12/13/05/15/puppy-1903313_1280.jpg",
     cart: false,
@@ -54,6 +80,7 @@ const pets = [
     gender: "Male",
     type: "English Springer Spaniel",
     location: "Lalbagh, Bangalore",
+    owner: "Mithuraa",
     image:
       "https://cdn.pixabay.com/photo/2019/08/07/14/11/dog-4390885_1280.jpg",
     cart: false,
@@ -64,16 +91,18 @@ const pets = [
     gender: "Female",
     type: "Beagle Mix",
     location: "Dubai Sandhu, Hyderabad",
+    owner: "Mithuraa",
     image:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Cute_dog.jpg/2560px-Cute_dog.jpg",
     cart: false,
   },
   {
-    name: "Max",
+    name: "Min",
     age: "2",
     gender: "Male",
     type: "Golden Retriever",
     location: "Charminar, Hyderabad",
+    owner: "Mithuraa",
     image:
       "https://cdn.pixabay.com/photo/2017/09/25/13/12/puppy-2785074_1280.jpg",
     cart: false,
@@ -84,6 +113,7 @@ const pets = [
     gender: "Female",
     type: "Pembroke Welsh Corgi",
     location: "Egmore, Chennai",
+    owner: "Mithuraa",
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTROLLARPFP-cJesIVqS44x8QONuh8rlMQjjQ&s",
     cart: false,
@@ -93,6 +123,7 @@ const pets = [
 Init();
 AddListenerstoButtons();
 UpdateCartButtons();
+Hightlight();
 
 function Init() {
   const container = document.getElementById("container");
@@ -117,8 +148,8 @@ function Init() {
 
             <button class="cart-button" data-name=${pet.name}>Add To Cart</button>
 
-            <!-- <button class="buy-button" data-name=${pet.name}>Buy Now</button> -->
-            <a href="cart.html?${new URLSearchParams(pet)}" target="_blank"><button class="buy-button">Buy Now</button></a>
+            <button class="buy-button" data-name=${pet.name}>Buy Now</button> 
+            <!--  <a href="cart.html?${new URLSearchParams(pet)}" target="_blank"><button class="buy-button">Buy Now</button></a>-->
             </div>
             `;
     container.appendChild(card);
@@ -129,7 +160,9 @@ function AddListenerstoButtons() {
   // buy-button
   let buyButtons = document.getElementsByClassName("buy-button");
   [...buyButtons].forEach((element) => {
-    element.addEventListener("click", BuyItem);
+    element.addEventListener("click", function () {
+      BuyItem(element.dataset.name);
+    });
   });
 
   // add to cart button
@@ -141,15 +174,17 @@ function AddListenerstoButtons() {
   });
 }
 
-// function to happend with buy-now is clicked
-function BuyItem() {
-  const cartProducts = products.filter((product) => product.cart);
+// function to happen when buy-now is clicked
+function BuyItem(name) {
+  let pet = pets.find((pet) => pet.name === name);
+  let BuyNowpets = [];
+  BuyNowpets.push(pet);
 
-  // store the product in storage
-  localStorage.setItem("buyNow", JSON.stringify(cartProducts));
+  // store the pet in storage
+  localStorage.setItem("buyNow", JSON.stringify(BuyNowpets));
 
   // redirect to checkout page
-  window.location.href = "checkout.html";
+  window.location.href = "cart.html";
 }
 
 // function to add a pet to cart
@@ -183,6 +218,31 @@ function UpdateCartButtons() {
 
     if (pet.cart) {
       element.innerHTML = "Remove from Cart";
+    }
+  });
+}
+
+function Hightlight() {
+  const nameToHighlight = localStorage.getItem("highlightPet") || "";
+
+  document.querySelectorAll(".card").forEach((card) => {
+    const petNameTag = card.querySelector("h2");
+    if (petNameTag) {
+      const petName = petNameTag.textContent.split(" - ")[0].trim();
+      if (petName.toLowerCase() === nameToHighlight.toLowerCase()) {
+        card.scrollIntoView({ behavior: "smooth", block: "center" });
+        card.classList.add("highlighted");
+
+        setTimeout(() => {
+          card.classList.add("fade");
+          card.classList.remove("highlighted");
+
+          // optional: clean up the 'fade' class after transition ends
+          setTimeout(() => {
+            card.classList.remove("fade");
+          }, 1000);
+        }, 3000);
+      }
     }
   });
 }
