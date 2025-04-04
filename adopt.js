@@ -1,23 +1,29 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const petToHighlight = localStorage.getItem("highlightPet");
+  Init();
+  AddListenerstoButtons();
+  UpdateCartButtons();
+  Highlight(); // Call highlight after DOM is fully loaded
 
-  if (petToHighlight) {
-    const cards = document.querySelectorAll(".card");
+  const petId = localStorage.getItem("highlightPetId");
+  if (petId) {
+    console.log("Found pet ID to highlight:", petId);
+    const card = document.getElementById(petId);
+    if (card) {
+      console.log("Found card with ID:", petId);
+      card.classList.add("highlighted");
+      card.scrollIntoView({ behavior: "smooth", block: "center" });
 
-    for (const card of cards) {
-      const nameTag = card.querySelector("h2");
-      if (
-        nameTag &&
-        nameTag.textContent.trim().toUpperCase() ===
-          petToHighlight.toUpperCase()
-      ) {
-        card.classList.add("highlighted");
-        card.scrollIntoView({ behavior: "smooth", block: "center" });
-        break;
-      }
+      setTimeout(() => {
+        card.classList.add("fade-out");
+      }, 3000);
+
+      setTimeout(() => {
+        card.classList.remove("highlighted", "fade-out");
+      }, 4000);
+    } else {
+      console.log("Could not find card with ID:", petId);
     }
-
-    localStorage.removeItem("highlightPet");
+    localStorage.removeItem("highlightPetId");
   }
 });
 
@@ -120,10 +126,10 @@ const pets = [
   },
 ];
 
-Init();
-AddListenerstoButtons();
-UpdateCartButtons();
-Hightlight();
+// Init();
+// AddListenerstoButtons();
+// UpdateCartButtons();
+// Highlight();
 
 function Init() {
   const container = document.getElementById("container");
@@ -131,6 +137,7 @@ function Init() {
   pets.forEach((pet) => {
     const card = document.createElement("div");
     card.className = "card";
+    card.id = pet.name.toLowerCase();
 
     card.innerHTML = `
             <img src="${pet.image}" alt="${pet.name}" />
@@ -222,26 +229,54 @@ function UpdateCartButtons() {
   });
 }
 
-function Hightlight() {
-  const nameToHighlight = localStorage.getItem("highlightPet") || "";
+function Highlight() {
+  // ONLY check localStorage, not sessionStorage
+  const nameToHighlight = localStorage.getItem("highlightPet");
+  const idToHighlight = localStorage.getItem("highlightPetId");
+
+  console.log("Highlighting pet:", nameToHighlight, "or ID:", idToHighlight);
 
   document.querySelectorAll(".card").forEach((card) => {
+    // Get the pet name from the h2 tag
     const petNameTag = card.querySelector("h2");
     if (petNameTag) {
       const petName = petNameTag.textContent.split(" - ")[0].trim();
-      if (petName.toLowerCase() === nameToHighlight.toLowerCase()) {
+
+      // Set ID attribute on card based on pet name if not already set
+      if (!card.id && petName) {
+        card.id = petName.toLowerCase();
+      }
+
+      console.log("Checking card:", petName, "with ID:", card.id);
+
+      // Check if this card matches either the name or id criteria (case insensitive)
+      if (
+        (nameToHighlight &&
+          petName.toLowerCase() === nameToHighlight.toLowerCase()) ||
+        (idToHighlight && card.id.toLowerCase() === idToHighlight.toLowerCase())
+      ) {
+        console.log("Found match! Highlighting:", petName);
+
+        // Scroll to the card
         card.scrollIntoView({ behavior: "smooth", block: "center" });
+
+        // Add highlight class
         card.classList.add("highlighted");
 
+        // Set a timeout to fade out highlight
         setTimeout(() => {
-          card.classList.add("fade");
+          card.classList.add("fade-out"); // Use fade-out here since it's defined in your CSS
           card.classList.remove("highlighted");
 
-          // optional: clean up the 'fade' class after transition ends
+          // Clean up after animation
           setTimeout(() => {
-            card.classList.remove("fade");
+            card.classList.remove("fade-out");
           }, 1000);
         }, 3000);
+
+        // Clear both storage items
+        localStorage.removeItem("highlightPet");
+        localStorage.removeItem("highlightPetId");
       }
     }
   });
