@@ -27,15 +27,14 @@
                 background-color: #f9f9f9;
             }
 
-      .main-container {
-        display: flex;
-        justify-content: space-evenly;
-        background: blueviolet;
-        padding: 5px;
-        min-width: 35%;
-        border-radius: 25px;
-        transform: translateY(-8px);
-      }
+            .main-container {
+                display: flex;
+                justify-content: space-evenly;
+                background: blueviolet;
+                padding: 20px;
+                min-width: 35%;
+                border-radius: 25px;
+            }
 
             .form-container {
                 margin: 10px;
@@ -150,185 +149,133 @@
                 color: #333;
             }
 
-      .pet-info p {
-        margin: 5px 0;
-        color: #555;
-      }
-      .navbar-perm {
-        position: relative;
-        width: 70%;
-        height: 30px;
-        display: flex;
-        transform: translateY(-12px);
-        justify-content: space-between;
-        padding: 0 20px;
-        background-color: black;
-        color: whitesmoke;
-        border: 1px solid darkgray;
-        backdrop-filter: blur(8px);
-        border-radius: 20px;
-        margin: 0 auto 20px auto;
-      }
-      .navbar-links {
-        align-self: center;
-      }
-      .navbar-links ul {
-        padding: 0;
-        margin: 0;
-      }
-      .navbar-logo {
-        align-self: right;
-      }
-      .navbar-links img {
-        height: 20px;
-        width: 20px;
-        background-size: contain;
-        vertical-align: middle;
-      }
-      li {
-        display: inline-block;
-      }
-      a {
-        color: whitesmoke;
-        text-decoration: none;
-      }
-    </style>
-  </head>
+            .pet-info p {
+                margin: 5px 0;
+                color: #555;
+            }
 
-  <body>
-    <div class="navbar-perm">
-      <div class="navbar-links">
-        <nav>
-          <ul style="list-style: none">
-            <li style="display: inline-block; margin-right: 10px">
-              <a href="home.html" style="color: whitesmoke">Home</a>
-            </li>
-            <li style="display: inline-block; margin-right: 10px">
-              <a href="adopt.html" style="color: whitesmoke">Adopt</a>
-            </li>
-            <li style="display: inline-block; margin-right: 10px">
-              <a href="care_guide.html" style="color: whitesmoke">Care Guide</a>
-            </li>
-            <li style="display: inline-block; margin-right: 10px">
-              <a href="accessories.html" style="color: whitesmoke"
-                >Accessories</a
-              >
-            </li>
-            <li style="display: inline-block; margin-right: 10px">
-              <a
-                href="cart.html"
-                style="color: whitesmoke; display: flex; align-items: center"
-              >
-                <span style="display: inline-block">(</span>
-                <img
-                  src="images/shooping-cart-img.png"
-                  alt="shopping-cart"
-                  style="margin: 0"
-                />
-                <span style="display: inline-block">)</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div class="navbar-logo">
-        <h3 style="margin: 0; transform: translateY(2px)">DoggyFoster</h3>
-      </div>
-    </div>
-    <div class="main-container">
-      <div class="summary-container" id="summary-container">
-        <h2>Checkout Summary</h2>
-        <div class="buy-summary" id="buy-summary"></div>
-      </div>
-      <div class="form-container">
-        <h2>Enter Your Details</h2>
-        <form action="#" method="POST">
-          <table>
-            <tr>
-              <td>
-                <label for="name">Full Name:</label>
-              </td>
-              <td>
-                <input type="text" id="name" name="name" required />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="email">Email:</label>
-              </td>
-              <td>
-                <input type="email" id="email" name="email" required />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="phone">Phone Number:</label>
-              </td>
-              <td>
-                <input type="tel" id="phone" name="phone" required />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="address">Shipping Address:</label>
-              </td>
-              <td>
-                <input type="text" id="address" name="address" required />
-              </td>
-            </tr>
-            <tr>
-              <td><label for="city">City:</label></td>
-              <td>
-                <input type="text" id="city" name="city" required />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="state">State:</label>
-              </td>
-              <td>
-                <input type="text" id="state" name="state" required />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="zip">Zip Code:</label>
-              </td>
-              <td>
-                <input type="text" id="zip" name="zip" required />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="payment">Payment Method:</label>
-              </td>
-              <td>
-                <select id="payment" name="payment">
-                  <option value="credit">Credit Card</option>
-                  <option value="debit">Debit Card</option>
-                  <option value="paypal">PayPal</option>
-                  <option value="cod">Cash on Delivery</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="notes">Additional Notes:</label>
-              </td>
-              <td>
-                <textarea
-                  id="notes"
-                  name="notes"
-                  rows="3"
-                  style="width: 100%"
-                ></textarea>
-              </td>
-            </tr>
-          </table>
-          <button type="submit" class="submit-btn">Submit Order</button>
-        </form>
-      </div>
-    </div>
-    <script src="cart.js"></script>
-  </body>
+            .product-card {
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                gap: 20px;
+                padding: 20px;
+                border-radius: 25px;
+                background: #f9f9f9;
+                max-width: 600px;
+                margin: auto;
+                margin-bottom: 10px;
+                transition:
+                    transform 0.3s ease,
+                    border-color 0.3s ease,
+                    box-shadow 0.3s ease;
+                scroll-snap-align: center;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            }
+
+            .product-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 12px 36px darkgrey;
+                border-color: blueviolet;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="main-container">
+            <div class="summary-container" id="summary-container">
+                <h2>Checkout Summary</h2>
+                <div class="buy-summary" id="buy-summary"></div>
+            </div>
+            <div class="form-container">
+                <h2>Enter Your Details</h2>
+                <form action="#" method="POST">
+                    <table>
+                        <tr>
+                            <td>
+                                <label for="name">Full Name:</label>
+                            </td>
+                            <td>
+                                <input type="text" id="name" name="name" required />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="email">Email:</label>
+                            </td>
+                            <td>
+                                <input type="email" id="email" name="email" required />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="phone">Phone Number:</label>
+                            </td>
+                            <td>
+                                <input type="tel" id="phone" name="phone" required />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="address">Shipping Address:</label>
+                            </td>
+                            <td>
+                                <input type="text" id="address" name="address" required />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="city">City:</label></td>
+                            <td>
+                                <input type="text" id="city" name="city" required />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="state">State:</label>
+                            </td>
+                            <td>
+                                <input type="text" id="state" name="state" required />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="zip">Zip Code:</label>
+                            </td>
+                            <td>
+                                <input type="text" id="zip" name="zip" required />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="payment">Payment Method:</label>
+                            </td>
+                            <td>
+                                <select id="payment" name="payment">
+                                    <option value="credit">Credit Card</option>
+                                    <option value="debit">Debit Card</option>
+                                    <option value="paypal">PayPal</option>
+                                    <option value="cod">Cash on Delivery</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="notes">Additional Notes:</label>
+                            </td>
+                            <td>
+                                <textarea
+                                    id="notes"
+                                    name="notes"
+                                    rows="3"
+                                    style="width: 100%"
+                                ></textarea>
+                            </td>
+                        </tr>
+                    </table>
+                    <button type="submit" class="submit-btn">Submit Order</button>
+                </form>
+            </div>
+        </div>
+        <script src="cart.js"></script>
+    </body>
 </html>
