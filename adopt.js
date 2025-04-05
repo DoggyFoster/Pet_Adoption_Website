@@ -34,7 +34,7 @@ const pets = [
         gender: 'Male',
         type: 'Senior',
         location: 'Pune',
-        owner: 'Nikita',
+        owner: 'Krishanth',
         image: 'images/karman.jpg',
         cart: false,
     },
@@ -52,9 +52,9 @@ const pets = [
         name: 'Max',
         age: 3,
         gender: 'Male',
-        type: 'Adult',
-        location: 'Mumbai',
-        owner: 'Mithuraa',
+        type: 'Maine Coon Cat',
+        location: 'Andheri West, Mumbai',
+        owner: 'Karthik R.',
         image: 'images/cat.jpg',
         cart: false,
     },
@@ -62,9 +62,9 @@ const pets = [
         name: 'Rico',
         age: 4,
         gender: 'Male',
-        type: 'Adult',
+        type: 'Labrador Retriever',
         location: 'India Gate, New Delhi',
-        owner: 'Mithuraa',
+        owner: 'Revathi N.',
         image: 'https://cdn.pixabay.com/photo/2023/08/18/15/02/dog-8198719_1280.jpg',
         cart: false,
     },
@@ -72,49 +72,49 @@ const pets = [
         name: 'Jesse',
         age: 3,
         gender: 'Male',
-        type: 'Young',
-        location: 'Panjim, Goa',
-        owner: 'Mithuraa',
+        type: 'Golden Retriever',
+        location: 'Campal, Panjim, Goa',
+        owner: 'Anirudh Babu',
         image: 'https://cdn.pixabay.com/photo/2016/12/13/05/15/puppy-1903313_1280.jpg',
         cart: false,
     },
     {
         name: 'McCabe',
-        age: 'Adult',
+        age: 5,
         gender: 'Male',
-        type: 'English Springer Spaniel',
-        location: 'Lalbagh, Bangalore',
-        owner: 'Mithuraa',
+        type: 'English Spaniel',
+        location: 'Lalbagh Garden, Bangalore',
+        owner: 'Sowmya Rajan',
         image: 'https://cdn.pixabay.com/photo/2019/08/07/14/11/dog-4390885_1280.jpg',
         cart: false,
     },
     {
         name: 'Luna',
-        age: '1',
+        age: 1,
         gender: 'Female',
         type: 'Beagle Mix',
-        location: 'Dubai Sandhu, Hyderabad',
-        owner: 'Mithuraa',
+        location: 'HiTech City, Hyderabad',
+        owner: 'Harsha V.',
         image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Cute_dog.jpg/2560px-Cute_dog.jpg',
         cart: false,
     },
     {
         name: 'Min',
-        age: '2',
+        age: 2,
         gender: 'Male',
         type: 'Golden Retriever',
-        location: 'Charminar, Hyderabad',
-        owner: 'Mithuraa',
+        location: 'Charminar Area, Hyderabad',
+        owner: 'Meghana S.',
         image: 'https://cdn.pixabay.com/photo/2017/09/25/13/12/puppy-2785074_1280.jpg',
         cart: false,
     },
     {
         name: 'Bella',
-        age: '8',
+        age: 8,
         gender: 'Female',
         type: 'Pembroke Welsh Corgi',
         location: 'Egmore, Chennai',
-        owner: 'Mithuraa',
+        owner: 'Arvind M.',
         image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTROLLARPFP-cJesIVqS44x8QONuh8rlMQjjQ&s',
         cart: false,
     },
@@ -134,25 +134,22 @@ function Init() {
         card.id = pet.name.toLowerCase();
 
         card.innerHTML = `
-            <img src="${pet.image}" alt="${pet.name}" />
-            <div class="card-content">
-            <h2>${pet.name} - ${pet.age} years old</h2>
-            <p>${pet.gender}, ${pet.type}</p>
-            <p>${pet.location}</p>
+          <img src="${pet.image}" alt="${pet.name}" />
+          <div class="card-content">
+            <h2>${pet.name} – ${pet.age} yrs</h2>
 
-            <div class="contact-details">
-            <p><span>Owner:</span> ${pet.owner}</p>
-            <p><span>Number:</span> Contact Now</p>
+            <div class="pet-meta">
+              <p>${pet.type} <span style="font-weight:bold;">•</span> ${pet.gender}</p>
+              <p>${pet.location}</p>
+              <p class="owner"><span style="font-weight:bold;">Owner</span>: ${pet.owner}</p>
             </div>
 
             <a href="larger-card.html?${new URLSearchParams(pet)}" target="_blank" class="details-link">See more details ↗</a>
 
             <button class="cart-button" data-name=${pet.name}>Add To Cart</button>
-
             <button class="buy-button" data-name=${pet.name}>Buy Now</button> 
-            <!--  <a href="cart.html?${new URLSearchParams(pet)}" target="_blank"><button class="buy-button">Buy Now</button></a>-->
-            </div>
-            `;
+          </div>
+        `;
         container.appendChild(card);
     });
 }
