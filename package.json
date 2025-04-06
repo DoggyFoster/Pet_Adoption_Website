@@ -1,15 +1,22 @@
 {
-  "name": "myelectronwork",
-  "version": "1.0.0",
-  "main": "main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
-  },
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "devDependencies": {
-    "electron": "^35.0.3"
-  }
+    "name": "pet_adoption_website",
+    "version": "1.0.0",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron ."
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Krishanth-K/Pet_Adoption_Website.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Krishanth-K/Pet_Adoption_Website/issues"
+    },
+    "homepage": "https://github.com/Krishanth-K/Pet_Adoption_Website#readme",
+    "description": "",
+    "dependencies": {
+        "electron": "^35.1.4"
+    }
 }

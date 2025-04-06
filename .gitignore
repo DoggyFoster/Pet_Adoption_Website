@@ -35,3 +35,6 @@ Thumbs.db
 
 # Package lock (optional if using yarn or pnpm)
 package-lock.json
+package.json
+electron.js
+
