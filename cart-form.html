@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Checkout Form</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            * {
+                font-family: 'Montserrat', sans-serif;
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                background-color: white;
+                padding: 20px;
+                border-radius: 12px;
+            }
+
+            h2 {
+                text-align: center;
+                margin-bottom: 25px;
+                color: #333;
+                font-size: 22px;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            td {
+                padding: 10px;
+                vertical-align: top;
+            }
+
+            label {
+                font-size: 14px;
+                color: #555;
+                font-weight: 500;
+                display: block;
+                margin-bottom: 3px;
+            }
+
+            input,
+            select,
+            textarea {
+                width: 100%;
+                padding: 10px;
+                margin-top: 2px;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                font-size: 14px;
+                transition: border-color 0.3s ease;
+            }
+
+            input:focus,
+            select:focus,
+            textarea:focus {
+                outline: none;
+                border-color: #9ec6f3;
+                box-shadow: 0 0 0 2px rgba(158, 198, 243, 0.2);
+            }
+
+            .submit-btn {
+                width: 100%;
+                padding: 14px;
+                background-color: #4a90e2;
+                color: white;
+                border: none;
+                border-radius: 10px;
+                font-size: 16px;
+                cursor: pointer;
+                margin-top: 20px;
+                transition: background-color 0.3s ease;
+                font-weight: 600;
+            }
+
+            .submit-btn:hover {
+                background-color: #357abf;
+            }
+
+            /* Success message */
+            .success-message {
+                display: none;
+                text-align: center;
+                padding: 15px;
+                background-color: #d4edda;
+                color: #155724;
+                border-radius: 8px;
+                margin-bottom: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Enter Your Details</h2>
+
+        <div id="success-alert" class="success-message">Order placed successfully!</div>
+
+        <form id="checkout-form">
+            <table>
+                <tr>
+                    <td style="width: 30%">
+                        <label for="name">Full Name</label>
+                    </td>
+                    <td>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            required
+                            placeholder="Your full name"
+                        />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="email">Email</label>
+                    </td>
+                    <td>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                            placeholder="your.email@example.com"
+                        />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="phone">Phone Number</label>
+                    </td>
+                    <td>
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            pattern="\d{10}"
+                            required
+                            placeholder="10-digit phone number"
+                        />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="address">Shipping Address</label>
+                    </td>
+                    <td>
+                        <input
+                            type="text"
+                            id="address"
+                            name="address"
+                            required
+                            placeholder="Street address"
+                        />
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="city">City</label></td>
+                    <td>
+                        <input type="text" id="city" name="city" required placeholder="City" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="state">State</label>
+                    </td>
+                    <td>
+                        <input type="text" id="state" name="state" required placeholder="State" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="zip">Zip Code</label>
+                    </td>
+                    <td>
+                        <input
+                            type="text"
+                            id="zip"
+                            name="zip"
+                            pattern="\d{6}"
+                            required
+                            placeholder="6-digit zip code"
+                        />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="payment">Payment Method</label>
+                    </td>
+                    <td>
+                        <select id="payment" name="payment" required>
+                            <option value="">Select payment method</option>
+                            <option value="credit">Credit Card</option>
+                            <option value="debit">Debit Card</option>
+                            <option value="paypal">PayPal</option>
+                            <option value="cod">Cash on Delivery</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="notes">Additional Notes</label>
+                    </td>
+                    <td>
+                        <textarea
+                            id="notes"
+                            name="notes"
+                            rows="4"
+                            style="width: 100%"
+                            placeholder="Any special instructions or additional information"
+                        ></textarea>
+                    </td>
+                </tr>
+            </table>
+            <button type="submit" class="submit-btn">Place Order</button>
+        </form>
+
+        <script>
+            document.getElementById('checkout-form').addEventListener('submit', function (e) {
+                e.preventDefault(); // Prevent actual form submission
+
+                // Show success message in the form
+                const successAlert = document.getElementById('success-alert');
+                successAlert.style.display = 'block';
+
+                // Hide success message after 3 seconds
+                setTimeout(() => {
+                    successAlert.style.display = 'none';
+                }, 3000);
+
+                // Reset the form
+                this.reset();
+
+                // Notify parent window about form submission
+                window.parent.postMessage(
+                    {
+                        type: 'formSubmitted',
+                    },
+                    '*'
+                );
+            });
+        </script>
+    </body>
+</html>

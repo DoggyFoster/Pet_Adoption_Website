@@ -3,12 +3,11 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Buy Page</title>
+        <title>Checkout Form</title>
         <link
             href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
             rel="stylesheet"
         />
-        <link rel="icon" type="image/png" href="favicons/favicon-32x32.png" />
         <style>
             * {
                 font-family: 'Montserrat', sans-serif;
@@ -18,36 +17,6 @@
             }
 
             body {
-                /*font-family: Arial, sans-serif;
-        /* display: flex; */
-                /* justify-content: center; */
-                min-height: 100vh;
-                padding: 20px;
-                margin: 0;
-                background-color: #e8ebe0;
-            }
-
-            .main-container {
-                display: flex;
-                justify-content: space-evenly;
-                background: blueviolet;
-                padding: 8px;
-                min-width: 35%;
-                border-radius: 25px;
-                transform: translateY(-10px);
-            }
-
-            .form-container {
-                margin: 10px;
-                width: 100%;
-                background-color: whitesmoke;
-                padding: 15px;
-                border-radius: 25px;
-            }
-
-            .summary-container {
-                margin: 10px;
-                width: 100%;
                 background-color: whitesmoke;
                 padding: 15px;
                 border-radius: 25px;
@@ -67,117 +36,51 @@
                 padding: 10px;
             }
 
-            input,
-            select {
-                width: 100%;
-                padding: 8px;
-                margin-top: 4px;
-                border: 1px solid #ccc;
-                border-radius: 6px;
-            }
-
-            .submit-btn {
-                width: 100%;
-                padding: 12px;
-                background-color: #9ec6f3;
-                color: white;
-                border: none;
-                border-radius: 20px;
-                font-size: 16px;
-                cursor: pointer;
-                margin-top: 10px;
-            }
-
-            .submit-btn:hover {
-                background-color: #9fb3df;
-            }
-
-            img {
-                float: left;
-                height: 200px;
-                border-radius: 8px 8px 0 0;
-            }
-
-            .summary-container {
-                display: flow-root;
-                margin-bottom: 30px;
-            }
-
-            button {
-                border-radius: 25px;
-                padding: 8px;
-            }
-
-            /* Style for the pet card */
-            .pet-card,
-            .accessories-card {
-                display: flex;
-                justify-content: space-evenly;
-                align-items: center;
-                gap: 20px;
-                padding: 20px;
-                border-radius: 25px;
-                background: #f9f9f9;
-                max-width: 600px;
-                margin: auto;
-                margin-bottom: 10px;
-                transition:
-                    transform 0.3s ease,
-                    border-color 0.3s ease,
-                    box-shadow 0.3s ease;
-                scroll-snap-align: center;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            }
-
-            .pet-card:hover,
-            .accessories-card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 12px 36px darkgrey;
-                border-color: blueviolet;
-            }
-
-            /* Image section */
-            .pet-image img {
-                width: 150px;
-                height: 150px;
-                object-fit: cover;
-                border-radius: 8px;
-            }
-
-            /* Pet details */
-            .pet-info h2 {
+            <!doctype html>
+            <html lang="en">
+                <head>
+                    <meta charset="UTF-8" />
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                    <title>Buy Page</title>
+                    <link
+                        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+                        rel="stylesheet"
+                    />
+                    <link rel="icon" type="image/png" href="favicons/favicon-32x32.png" />
+                    <style>
+                        * {
+                font-family: 'Montserrat', sans-serif;
                 margin: 0;
-                color: #333;
+                padding: 0;
+                box-sizing: border-box;
             }
 
-            .pet-info p {
-                margin: 5px 0;
-                color: #555;
+            body {
+                min-height: 100vh;
+                padding: 20px;
+                margin: 0;
+                background-color: #e8ebe0;
             }
 
-            .product-card {
+            .main-container {
                 display: flex;
                 justify-content: space-evenly;
-                align-items: center;
-                gap: 20px;
-                padding: 20px;
+                background: transparent;
+                padding: 8px;
+                min-width: 35%;
                 border-radius: 25px;
-                background: #f9f9f9;
-                max-width: 600px;
-                margin: auto;
-                margin-bottom: 10px;
-                transition:
-                    transform 0.3s ease,
-                    border-color 0.3s ease,
-                    box-shadow 0.3s ease;
-                scroll-snap-align: center;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                transform: translateY(15px);
+                margin-bottom: 20px;
             }
 
-            .product-card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 12px 36px darkgrey;
-                border-color: blueviolet;
+            iframe {
+                margin: 10px;
+                width: 100%;
+                height: 720px; /* Increased height to fit the form content */
+                background-color: whitesmoke;
+                border: 8px solid blueviolet;
+                border-radius: 25px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             }
 
             .navbar-perm {
@@ -257,105 +160,24 @@
         </div>
 
         <div class="main-container">
-            <div class="summary-container" id="summary-container">
-                <h2>Checkout Summary</h2>
-                <div class="buy-summary" id="buy-summary"></div>
-            </div>
-            <div class="form-container">
-                <h2>Enter Your Details</h2>
-                <form action="#" method="POST">
-                    <table>
-                        <tr>
-                            <td>
-                                <label for="name">Full Name:</label>
-                            </td>
-                            <td>
-                                <input type="text" id="name" name="name" required />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="email">Email:</label>
-                            </td>
-                            <td>
-                                <input type="email" id="email" name="email" required />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="phone">Phone Number:</label>
-                            </td>
-                            <td>
-                                <input
-                                    type="tel"
-                                    id="phone"
-                                    name="phone"
-                                    pattern="\d{10}"
-                                    required
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="address">Shipping Address:</label>
-                            </td>
-                            <td>
-                                <input type="text" id="address" name="address" required />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><label for="city">City:</label></td>
-                            <td>
-                                <input type="text" id="city" name="city" required />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="state">State:</label>
-                            </td>
-                            <td>
-                                <input type="text" id="state" name="state" required />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="zip">Zip Code:</label>
-                            </td>
-                            <td>
-                                <input type="text" id="zip" name="zip" pattern="\d{6}" required />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="payment">Payment Method:</label>
-                            </td>
-                            <td>
-                                <select id="payment" name="payment" required>
-                                    <option value="credit">Credit Card</option>
-                                    <option value="debit">Debit Card</option>
-                                    <option value="paypal">PayPal</option>
-                                    <option value="cod">Cash on Delivery</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="notes">Additional Notes:</label>
-                            </td>
-                            <td>
-                                <textarea
-                                    id="notes"
-                                    name="notes"
-                                    rows="3"
-                                    style="width: 100%"
-                                ></textarea>
-                            </td>
-                        </tr>
-                    </table>
-                    <button type="submit" class="submit-btn">Submit Order</button>
-                </form>
-            </div>
+            <iframe id="summary-frame" src="cart-summary.html" title="Checkout Summary"></iframe>
+            <iframe id="form-frame" src="cart-form.html" title="Checkout Form"></iframe>
         </div>
-        <script src="cart.js"></script>
+
+        <script>
+            // Function to communicate between frames
+            window.addEventListener('message', function (event) {
+                // Check for messages from iframes
+                if (event.data.type === 'formSubmitted') {
+                    // When form is submitted, tell summary frame to empty cart
+                    document.getElementById('summary-frame').contentWindow.postMessage(
+                        {
+                            type: 'emptyCart',
+                        },
+                        '*'
+                    );
+                }
+            });
+        </script>
     </body>
 </html>

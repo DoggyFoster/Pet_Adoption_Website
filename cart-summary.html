@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Checkout Summary</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            * {
+                font-family: 'Montserrat', sans-serif;
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                background-color: white;
+                padding: 20px;
+                border-radius: 12px;
+            }
+
+            h2 {
+                text-align: center;
+                margin-bottom: 20px;
+                color: #333;
+                font-size: 22px;
+            }
+
+            /* Style for the pet card */
+            .pet-card,
+            .accessories-card {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 20px;
+                padding: 20px;
+                border-radius: 12px;
+                background: #f9f9f9;
+                max-width: 100%;
+                margin: auto;
+                margin-bottom: 15px;
+                transition: all 0.3s ease;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+                border-left: 4px solid #9ec6f3;
+            }
+
+            .pet-card:hover,
+            .accessories-card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            }
+
+            /* Image section */
+            .pet-image img {
+                width: 120px;
+                height: 120px;
+                object-fit: cover;
+                border-radius: 8px;
+            }
+
+            /* Pet details */
+            .pet-info {
+                flex: 1;
+            }
+
+            .pet-info h2 {
+                margin: 0 0 10px 0;
+                color: #333;
+                text-align: left;
+                font-size: 18px;
+            }
+
+            .pet-info p {
+                margin: 5px 0;
+                color: #555;
+                font-size: 14px;
+            }
+
+            .product-card {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 20px;
+                padding: 20px;
+                border-radius: 12px;
+                background: #f9f9f9;
+                max-width: 100%;
+                margin: auto;
+                margin-bottom: 15px;
+                transition: all 0.3s ease;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+                border-left: 4px solid #9ec6f3;
+            }
+
+            .product-card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            }
+
+            .remove-from-cart-btn {
+                background-color: #ff6b6b;
+                color: white;
+                border: none;
+                border-radius: 6px;
+                padding: 6px 12px;
+                cursor: pointer;
+                margin-top: 8px;
+                font-size: 13px;
+                transition: background-color 0.2s ease;
+            }
+
+            .remove-from-cart-btn:hover {
+                background-color: #e63946;
+            }
+
+            .empty-cart-message {
+                text-align: center;
+                color: #777;
+                font-size: 16px;
+                margin-top: 40px;
+                padding: 20px;
+                background-color: #f9f9f9;
+                border-radius: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Checkout Summary</h2>
+        <div class="buy-summary" id="buy-summary"></div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const buyNowCart = JSON.parse(localStorage.getItem('buyNow')) || [];
+                const summaryContainer = document.getElementById('buy-summary');
+
+                if (Array.isArray(buyNowCart) && buyNowCart.length > 0) {
+                    DisplayBuyNowItem(summaryContainer, buyNowCart);
+                    localStorage.removeItem('buyNow'); // Clear after use
+                } else {
+                    // Show normal cart pets
+                    DisplayCartItems(summaryContainer);
+                }
+            });
+
+            function DisplayCartItems(container) {
+                const petsInCart = JSON.parse(localStorage.getItem('petsInCart')) || [];
+                const productsInCart = JSON.parse(localStorage.getItem('productsInCart')) || [];
+
+                // Clear container first
+                container.innerHTML = '';
+
+                petsInCart.forEach(pet => {
+                    const petCard = document.createElement('div');
+                    petCard.classList.add('pet-card');
+
+                    petCard.innerHTML = `
+                    <div class="pet-image">
+                        <img src="${pet.image}" alt="${pet.name}" />
+                    </div>
+                    <div class="pet-info">
+                        <h2>${pet.name}</h2>
+                        <p><strong>Age:</strong> ${pet.age} years</p>
+                        <p><strong>Gender:</strong> ${pet.gender}</p>
+                        <p><strong>Type:</strong> ${pet.type}</p>
+                        <p><strong>Location:</strong> ${pet.location}</p>
+                        <button class="remove-from-cart-btn">Remove from Cart</button>
+                    </div>
+                `;
+
+                    petCard.querySelector('.remove-from-cart-btn').addEventListener('click', () => {
+                        RemoveFromCart(pet.id);
+                        petCard.remove();
+                        checkEmptyCart();
+                    });
+
+                    container.appendChild(petCard);
+                });
+
+                productsInCart.forEach(product => {
+                    const productCard = document.createElement('div');
+                    productCard.classList.add('product-card');
+
+                    productCard.innerHTML = `
+                    <div class="pet-image">
+                        <img src="${product.image}"  />
+                    </div>
+                    <div class="pet-info">
+                        <h2>${product.name}</h2>
+                        <p><strong>Price:</strong> $${product.price}</p>
+                        <button class="remove-from-cart-btn">Remove from Cart</button>
+                    </div>
+                `;
+
+                    productCard
+                        .querySelector('.remove-from-cart-btn')
+                        .addEventListener('click', () => {
+                            RemoveProductFromCart(product.id);
+                            productCard.remove();
+                            checkEmptyCart();
+                        });
+
+                    container.appendChild(productCard);
+                });
+
+                // Check if cart is empty
+                checkEmptyCart();
+            }
+
+            function checkEmptyCart() {
+                const summaryContainer = document.getElementById('buy-summary');
+                const petsInCart = JSON.parse(localStorage.getItem('petsInCart')) || [];
+                const productsInCart = JSON.parse(localStorage.getItem('productsInCart')) || [];
+
+                if (
+                    petsInCart.length === 0 &&
+                    productsInCart.length === 0 &&
+                    !summaryContainer.querySelector('.empty-cart-message')
+                ) {
+                    summaryContainer.innerHTML = '';
+                    const msg = document.createElement('div');
+                    msg.className = 'empty-cart-message';
+                    msg.textContent = 'Your cart is empty.';
+                    summaryContainer.appendChild(msg);
+                }
+            }
+
+            function DisplayBuyNowItem(summaryContainer, buyNowCart) {
+                const buyNowType = localStorage.getItem('buyNowType');
+
+                // Clear container first
+                summaryContainer.innerHTML = '';
+
+                if (buyNowType == 'pet') {
+                    buyNowCart.forEach(element => {
+                        const card = document.createElement('div');
+                        card.className = 'accessories-card';
+
+                        card.innerHTML = `
+                        <div class="pet-image">
+                            <img src="${element.image}" />
+                        </div>
+                        <div class="pet-info">
+                            <h2>${element.name}</h2>
+                            <p><strong>Age:</strong> ${element.age} years</p>
+                            <p><strong>Gender:</strong> ${element.gender}</p>
+                            <p><strong>Type:</strong> ${element.type}</p>
+                            <p><strong>Location:</strong> ${element.location}</p>
+                        </div>
+                    `;
+
+                        summaryContainer.appendChild(card);
+                    });
+                } else if (buyNowType == 'product') {
+                    buyNowCart.forEach(element => {
+                        const card = document.createElement('div');
+                        card.className = 'accessories-card';
+
+                        card.innerHTML = `
+                        <div class="pet-image">
+                            <img src="${element.image}" />
+                        </div>
+                        <div class="pet-info">
+                            <h2>${element.name}</h2>
+                            <p><strong>Price:</strong> $${element.price}</p>
+                        </div>
+                    `;
+
+                        summaryContainer.appendChild(card);
+                    });
+                }
+            }
+
+            function RemoveFromCart(id) {
+                const petsInCart = JSON.parse(localStorage.getItem('petsInCart')) || [];
+                const newCart = petsInCart.filter(pet => pet.id !== id);
+                localStorage.setItem('petsInCart', JSON.stringify(newCart));
+            }
+
+            function RemoveProductFromCart(id) {
+                let productsInCart = JSON.parse(localStorage.getItem('productsInCart')) || [];
+                productsInCart = productsInCart.filter(product => product.id !== id);
+                localStorage.setItem('productsInCart', JSON.stringify(productsInCart));
+            }
+
+            function EmptyCart() {
+                localStorage.setItem('petsInCart', JSON.stringify([]));
+                localStorage.setItem('productsInCart', JSON.stringify([]));
+
+                // Refresh the display
+                const summaryContainer = document.getElementById('buy-summary');
+                DisplayCartItems(summaryContainer);
+            }
+
+            // Listen for messages from parent window
+            window.addEventListener('message', function (event) {
+                if (event.data.type === 'emptyCart') {
+                    EmptyCart();
+                }
+            });
+        </script>
+    </body>
+</html>
