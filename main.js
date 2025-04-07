@@ -4,7 +4,8 @@ console.warn("Electron OS is running")
 
 function createWindow() {
     const win = new BrowserWindow({
-        webPreferences: { nodeIntegration: true }
+        webPreferences: { nodeIntegration: true },
+        icon: path.join(__dirname, 'images', 'icon-doggy.ico'),
     })
 
     win.maximize();
