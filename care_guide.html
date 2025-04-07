@@ -9,31 +9,27 @@
       rel="stylesheet"
     />
     <style>
+      :root {
+        --primary-color: blueviolet;
+        --secondary-color: green;
+        --accent-color: blueviolet;
+        --text-color: black;
+        --card-bg: whitesmoke;
+        --body-bg: #e8ebe0;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
       body {
-        background-color: #e8ebe0;
-        color: blueviolet;
+        background-color: var(--body-bg);
+        color: var(--text-color);
         font-family: "Montserrat", sans-serif;
-        margin: 20px;
-      }
-      .general_care_card,
-      .dog_nutrition_card,
-      .dogs_and_babies_card,
-      .dog_grooming_card,
-      .common_diseases_treatment_card {
-        background-color: blueviolet;
-        border-radius: 15px;
-        padding: 20px;
-        margin: 20px 40px;
-        /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
-        font-family: "Montserrat", sans-serif;
-      }
-      h2 {
-        font-family: "Montserrat", sans-serif;
-        color: whitesmoke;
-      }
-      p {
-        font-family: "Montserrat", sans-serif;
-        color: whitesmoke;
+        line-height: 1.6;
+        padding: 0;
       }
 
       .navbar-perm {
@@ -41,7 +37,7 @@
         width: 70%;
         height: 30px;
         display: flex;
-        transform: translateY(-12px);
+        transform: translateY(20px);
         justify-content: space-between;
         padding: 0 20px;
         background-color: black;
@@ -73,6 +69,92 @@
       a {
         color: whitesmoke;
         text-decoration: none;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .cart-icon {
+        height: 20px;
+        width: 20px;
+        vertical-align: middle;
+        margin-right: 5px;
+      }
+
+      .header {
+        text-align: center;
+        padding: 40px 0 20px;
+      }
+
+      .header h1 {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: 15px;
+      }
+
+      .header p {
+        color: var(--accent-color);
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+      }
+
+      .cards-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        margin-bottom: 40px;
+      }
+
+      .card {
+        background-color: var(--card-bg);
+        border-radius: 10px;
+        padding: 25px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .card h2 {
+        color: var(--primary-color);
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid var(--accent-color);
+      }
+
+      .card p {
+        margin-bottom: 12px;
+      }
+
+      .card b {
+        color: var(--accent-color);
+      }
+
+      footer {
+        width: 100%;
+        text-align: center;
+        padding: 20px 0;
+        background-color: #333;
+        color: white;
+        margin-top: 20px;
+      }
+
+      @media (max-width: 768px) {
+        .navbar-links ul {
+          gap: 10px;
+        }
+
+        .cards-container {
+          grid-template-columns: 1fr;
+        }
       }
     </style>
   </head>
@@ -110,72 +192,89 @@
         <h3 style="margin: 0; transform: translateY(2px)">DoggyFoster</h3>
       </div>
     </div>
-    <h1
-      style="
-        text-align: center;
-        font-size: 2rem;
-        font-family: &quot;Montserrat&quot;, sans-serif;
-      "
-    >
-      Pet Care Guide
-    </h1>
-    <p style="text-align: center; color: blueviolet">
-      Here are some tips to take care of your pet:
-    </p>
-    <div class="general_care_card">
-      <h2>General Care</h2>
-      <p><b>1.</b> Feed your pet a balanced diet.</p>
-      <p><b>2.</b> Provide fresh water at all times.</p>
-      <p><b>3.</b> Take your pet to the vet regularly.</p>
-      <p><b>4.</b> Keep your pet clean and groomed.</p>
-    </div>
-    <div class="dog_nutrition_card">
-      <h2>Dog Nutrition</h2>
-      <p>
-        <b>1.</b> Dogs need a balanced diet of protein, carbohydrates, fats,
-        vitamins, and minerals.
-      </p>
-      <p><b>2.</b> Avoid feeding your dog chocolate, grapes, and raisins.</p>
-      <p>
-        <b>3.</b> Make sure your dog has access to fresh water at all times.
-      </p>
-      <p>
-        <b>4.</b> Consult your vet for advice on the best diet for your dog.
-      </p>
-    </div>
-    <div class="dogs_and_babies_card">
-      <h2>Dogs and Babies</h2>
-      <p>
-        <b>1.</b> <i>Always supervise interactions between dogs and babies.</i>
-      </p>
-      <p><b>2.</b> <i>Teach your child to be gentle with the dog.</i></p>
-      <p><b>3.</b> <i>Never leave your baby alone with a dog.</i></p>
-      <p><b>4.</b> Make sure your dog is up-to-date on vaccinations.</p>
-      <p>
-        <b>5.</b> Train your dog to obey basic commands when babies are around.
-      </p>
-    </div>
-    <div class="dog_grooming_card">
-      <h2>Dog Grooming</h2>
-      <p><b>1.</b> Brush your dog's coat regularly to prevent matting.</p>
-      <p><b>2.</b> Trim your dog's nails to prevent overgrowth.</p>
-      <p><b>3.</b> Bathe your dog with dog-friendly shampoo.</p>
-      <p><b>4.</b> Check your dog's ears for signs of infection.</p>
-      <p>
-        <b>5.</b> Brush your dog's teeth regularly to prevent dental problems.
-      </p>
-    </div>
-    <div class="common_diseases_treatment_card">
-      <h2>Common Diseases and Treatment</h2>
-      <p><b>1.</b> <b>Heartworm</b>: Prevent with monthly medication.</p>
-      <p>
-        <b>2.</b> <b>Fleas and Ticks</b>: Use flea and tick prevention products.
-      </p>
-      <p><b>3.</b> <b>Parvovirus</b>: Vaccinate your dog against parvovirus.</p>
-      <p>
-        <b>4.</b> <b>Kennel Cough</b>: Vaccinate your dog against kennel cough.
-      </p>
-      <p><b>5.</b> <b>Dental Disease</b>: Brush your dog's teeth regularly.</p>
-    </div>
+
+    <header class="header container">
+      <h1>Pet Care Guide</h1>
+      <p>Here are some tips to take care of your pet</p>
+    </header>
+
+    <main class="container">
+      <div class="cards-container">
+        <div class="card">
+          <h2>General Care</h2>
+          <p><b>1.</b> Feed your pet a balanced diet.</p>
+          <p><b>2.</b> Provide fresh water at all times.</p>
+          <p><b>3.</b> Take your pet to the vet regularly.</p>
+          <p><b>4.</b> Keep your pet clean and groomed.</p>
+        </div>
+
+        <div class="card">
+          <h2>Dog Nutrition</h2>
+          <p>
+            <b>1.</b> Dogs need a balanced diet of protein, carbohydrates, fats,
+            vitamins, and minerals.
+          </p>
+          <p>
+            <b>2.</b> Avoid feeding your dog chocolate, grapes, and raisins.
+          </p>
+          <p>
+            <b>3.</b> Make sure your dog has access to fresh water at all times.
+          </p>
+          <p>
+            <b>4.</b> Consult your vet for advice on the best diet for your dog.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>Dogs and Babies</h2>
+          <p>
+            <b>1.</b>
+            <i>Always supervise interactions between dogs and babies.</i>
+          </p>
+          <p><b>2.</b> <i>Teach your child to be gentle with the dog.</i></p>
+          <p><b>3.</b> <i>Never leave your baby alone with a dog.</i></p>
+          <p><b>4.</b> Make sure your dog is up-to-date on vaccinations.</p>
+          <p>
+            <b>5.</b> Train your dog to obey basic commands when babies are
+            around.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>Dog Grooming</h2>
+          <p><b>1.</b> Brush your dog's coat regularly to prevent matting.</p>
+          <p><b>2.</b> Trim your dog's nails to prevent overgrowth.</p>
+          <p><b>3.</b> Bathe your dog with dog-friendly shampoo.</p>
+          <p><b>4.</b> Check your dog's ears for signs of infection.</p>
+          <p>
+            <b>5.</b> Brush your dog's teeth regularly to prevent dental
+            problems.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>Common Diseases and Treatment</h2>
+          <p><b>1.</b> <b>Heartworm</b>: Prevent with monthly medication.</p>
+          <p>
+            <b>2.</b> <b>Fleas and Ticks</b>: Use flea and tick prevention
+            products.
+          </p>
+          <p>
+            <b>3.</b> <b>Parvovirus</b>: Vaccinate your dog against parvovirus.
+          </p>
+          <p>
+            <b>4.</b> <b>Kennel Cough</b>: Vaccinate your dog against kennel
+            cough.
+          </p>
+          <p>
+            <b>5.</b> <b>Dental Disease</b>: Brush your dog's teeth regularly.
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>©️ 2025 DoggyFoster - All Rights Reserved</p>
+    </footer>
   </body>
 </html>

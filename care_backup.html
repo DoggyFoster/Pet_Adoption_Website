@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CareGuide-DoggyFoster</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #e8ebe0;
+        color: blueviolet;
+        font-family: "Montserrat", sans-serif;
+        margin: 20px;
+      }
+      .general_care_card,
+      .dog_nutrition_card,
+      .dogs_and_babies_card,
+      .dog_grooming_card,
+      .common_diseases_treatment_card {
+        background-color: blueviolet;
+        border-radius: 15px;
+        padding: 20px;
+        margin: 20px 40px;
+        /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+        font-family: "Montserrat", sans-serif;
+      }
+      h2 {
+        font-family: "Montserrat", sans-serif;
+        color: whitesmoke;
+      }
+      p {
+        font-family: "Montserrat", sans-serif;
+        color: whitesmoke;
+      }
+
+      .navbar-perm {
+        position: relative;
+        width: 70%;
+        height: 30px;
+        display: flex;
+        transform: translateY(-12px);
+        justify-content: space-between;
+        padding: 0 20px;
+        background-color: black;
+        color: whitesmoke;
+        border: 1px solid darkgray;
+        backdrop-filter: blur(8px);
+        border-radius: 20px;
+        margin: 0 auto 20px auto;
+      }
+      .navbar-links {
+        align-self: center;
+      }
+      .navbar-links ul {
+        padding: 0;
+        margin: 0;
+      }
+      .navbar-logo {
+        align-self: right;
+      }
+      .navbar-links img {
+        height: 20px;
+        width: 20px;
+        background-size: contain;
+        vertical-align: middle;
+      }
+      li {
+        display: inline-block;
+      }
+      a {
+        color: whitesmoke;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar-perm">
+      <div class="navbar-links">
+        <nav>
+          <ul style="list-style: none">
+            <li style="display: inline-block; margin-right: 10px">
+              <a href="home.html" style="color: whitesmoke">Home</a>
+            </li>
+            <li style="display: inline-block; margin-right: 10px">
+              <a href="adopt.html" style="color: whitesmoke">Adopt</a>
+            </li>
+            <li style="display: inline-block; margin-right: 10px">
+              <a href="care_guide.html" style="color: whitesmoke">Care Guide</a>
+            </li>
+            <li style="display: inline-block; margin-right: 10px">
+              <a href="accessories.html" style="color: whitesmoke"
+                >Accessories</a
+              >
+            </li>
+            <li style="display: inline-block; margin-right: 10px">
+              <a href="cart.html" style="color: whitesmoke"
+                >(<img
+                  src="images/shooping-cart-img.png"
+                  alt="shopping-cart"
+                />)</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="navbar-logo">
+        <h3 style="margin: 0; transform: translateY(2px)">DoggyFoster</h3>
+      </div>
+    </div>
+    <h1
+      style="
+        text-align: center;
+        font-size: 2rem;
+        font-family: &quot;Montserrat&quot;, sans-serif;
+      "
+    >
+      Pet Care Guide
+    </h1>
+    <p style="text-align: center; color: blueviolet">
+      Here are some tips to take care of your pet:
+    </p>
+    <div class="general_care_card">
+      <h2>General Care</h2>
+      <p><b>1.</b> Feed your pet a balanced diet.</p>
+      <p><b>2.</b> Provide fresh water at all times.</p>
+      <p><b>3.</b> Take your pet to the vet regularly.</p>
+      <p><b>4.</b> Keep your pet clean and groomed.</p>
+    </div>
+    <div class="dog_nutrition_card">
+      <h2>Dog Nutrition</h2>
+      <p>
+        <b>1.</b> Dogs need a balanced diet of protein, carbohydrates, fats,
+        vitamins, and minerals.
+      </p>
+      <p><b>2.</b> Avoid feeding your dog chocolate, grapes, and raisins.</p>
+      <p>
+        <b>3.</b> Make sure your dog has access to fresh water at all times.
+      </p>
+      <p>
+        <b>4.</b> Consult your vet for advice on the best diet for your dog.
+      </p>
+    </div>
+    <div class="dogs_and_babies_card">
+      <h2>Dogs and Babies</h2>
+      <p>
+        <b>1.</b> <i>Always supervise interactions between dogs and babies.</i>
+      </p>
+      <p><b>2.</b> <i>Teach your child to be gentle with the dog.</i></p>
+      <p><b>3.</b> <i>Never leave your baby alone with a dog.</i></p>
+      <p><b>4.</b> Make sure your dog is up-to-date on vaccinations.</p>
+      <p>
+        <b>5.</b> Train your dog to obey basic commands when babies are around.
+      </p>
+    </div>
+    <div class="dog_grooming_card">
+      <h2>Dog Grooming</h2>
+      <p><b>1.</b> Brush your dog's coat regularly to prevent matting.</p>
+      <p><b>2.</b> Trim your dog's nails to prevent overgrowth.</p>
+      <p><b>3.</b> Bathe your dog with dog-friendly shampoo.</p>
+      <p><b>4.</b> Check your dog's ears for signs of infection.</p>
+      <p>
+        <b>5.</b> Brush your dog's teeth regularly to prevent dental problems.
+      </p>
+    </div>
+    <div class="common_diseases_treatment_card">
+      <h2>Common Diseases and Treatment</h2>
+      <p><b>1.</b> <b>Heartworm</b>: Prevent with monthly medication.</p>
+      <p>
+        <b>2.</b> <b>Fleas and Ticks</b>: Use flea and tick prevention products.
+      </p>
+      <p><b>3.</b> <b>Parvovirus</b>: Vaccinate your dog against parvovirus.</p>
+      <p>
+        <b>4.</b> <b>Kennel Cough</b>: Vaccinate your dog against kennel cough.
+      </p>
+      <p><b>5.</b> <b>Dental Disease</b>: Brush your dog's teeth regularly.</p>
+    </div>
+  </body>
+</html>
